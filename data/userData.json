@@ -1,0 +1,11 @@
+{
+    "1": {
+      "password": "2",
+      "role": "admin"
+    },
+    "user2@example.com": {
+      "password": "password2",
+      "role": "member"
+    }
+    // Add more users as needed
+  }
