@@ -1,48 +1,71 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context'; // Import SafeAreaView
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Swiper from 'react-native-swiper';
 
 const EventsScreen = ({ navigation }) => {
   return (
-    <LinearGradient
-      colors={['#ffffff', '#767676']} // Gradient colors
-      style={styles.linearGradient}
-    >
+    <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
           {/* Event Header */}
           <Text style={styles.headerText}>Events</Text>
 
-          {/* Big Little Dinner */}
-          <View style={styles.eventItem}>
-            <Text style={styles.eventTitle}>Big Little Dinner</Text>
-            <Image
-              source={require('../assets/biglil.jpg')} // Replace with your actual image path
-              style={styles.eventImage}
-            />
-          </View>
+          {/* Event Swiper */}
+          <Text style={styles.eventTitle}>Big Little Dinner</Text>
+          <Swiper style={styles.swiperContainer} showsButtons={false}>
+            {/* Big Little Dinner */}
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
 
-          {/* Additional events can be added following the same pattern */}
-
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            <View style={styles.eventItem}>
+              <Image
+                source={require('../assets/biglil.jpg')} // Replace with your actual image path
+                style={styles.eventImage}
+              />
+            </View>
+            {/* Additional events can be added following the same pattern */}
+          </Swiper>
         </ScrollView>
 
         {/* Home Button */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
-          style={styles.homeButton}
-        >
-          <Image
-            source={require('../assets/homegear.png')} // Replace with your actual image path
-            style={styles.homeButtonImage}
-          />
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+          <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
         </TouchableOpacity>
       </SafeAreaView>
     </LinearGradient>
@@ -94,7 +117,21 @@ const styles = StyleSheet.create({
     width: 100, // Adjust the size as needed
     height: 100, // Adjust the size as needed
     resizeMode: 'contain',
-  }
+  },
+  swiperContainer: {
+    height: 300, // Adjust the height as needed
+  },
+  paginationContainer: {
+    position: 'absolute',
+    bottom: 10,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  paginationText: {
+    color: 'white',
+    fontSize: 16,
+  },
 });
 
 export default EventsScreen;
