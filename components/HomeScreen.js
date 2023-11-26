@@ -31,7 +31,7 @@ const HomePage = ({ navigation }) => {
             <Image source={require('../assets/HomeScreen/events.png')} style={styles.buttonImage} />
             <Text style={styles.buttonLabels}>Events</Text>
           </TouchableOpacity>
-
+          <View style={{ width: 50 }} />
           <TouchableOpacity onPress={() => navigation.navigate('Brothers')}>
             <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.buttonImage} />
             <Text style={styles.buttonLabels}>Brothers</Text>
@@ -44,7 +44,7 @@ const HomePage = ({ navigation }) => {
             <Image source={require('../assets/HomeScreen/pillars.png')} style={styles.buttonImage} />
             <Text style={styles.buttonLabels}>Pillars</Text>
           </TouchableOpacity>
-
+          <View style={{ width: 50 }} />
           <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
             <Image source={require('../assets/HomeScreen/meeting.png')} style={styles.buttonImage} />
             <Text style={styles.buttonLabels}>Meeting</Text>
