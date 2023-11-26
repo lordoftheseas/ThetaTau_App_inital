@@ -69,10 +69,10 @@ app.post('/start-meeting', async (req, res) => {
 // Endpoint to verify a meeting code
 app.post('/verify-meeting-code', async (req, res) => {
   try {
-    const { meetingCode, meetingId } = req.body;
+    const { meetingCode } = req.body;
     const activeMeeting = activeMeetings[meetingCode];
 
-    if (activeMeeting && activeMeeting.meetingId === meetingId) {
+    if (activeMeeting) {
       res.json({ success: true });
     } else {
       res.json({ success: false, message: 'Invalid meeting code' });

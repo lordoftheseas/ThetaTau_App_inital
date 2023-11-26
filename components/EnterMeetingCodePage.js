@@ -6,41 +6,35 @@ const EnterMeetingCodePage = ({ navigation }) => {
   const [meetingCode, setMeetingCode] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleEnterMeetingCode = async () => {
+  const handleVerifyMeetingCode = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:3001/verify-meeting-code', {
-        meetingCode,
-        // Add the user ID or any other identifier as meetingId
-        meetingId: user.id, // Assuming user has an 'id' property, replace it with the actual property name
+        meetingCode: meetingCode,
       });
-  
+
       if (response.data.success) {
-        // Verification successful, navigate to the Polling Page
         navigation.navigate('Polling');
       } else {
-        // Verification failed
         setErrorMessage('Invalid meeting code. Please try again.');
       }
     } catch (error) {
-      console.error('Error verifying meeting code:', error.response ? error.response.data : error.message);
+      console.error('Error verifying meeting code:', error);
       setErrorMessage('Error connecting to the server. Please try again.');
     }
   };
-  
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Enter Meeting Code</Text>
+      <Text>Enter Meeting Code</Text>
       <TextInput
         style={styles.input}
         placeholder="Meeting Code"
-        onChangeText={(text) => setMeetingCode(text)}
+        onChangeText={setMeetingCode}
       />
-      <TouchableOpacity style={styles.button} onPress={handleEnterMeetingCode}>
+      <TouchableOpacity style={styles.button} onPress={handleVerifyMeetingCode}>
         <Text style={styles.buttonText}>Enter</Text>
       </TouchableOpacity>
 
-      {/* Display error message for incorrect meeting code or server error */}
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
     </View>
   );
@@ -51,10 +45,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 16,
   },
   input: {
     height: 40,
