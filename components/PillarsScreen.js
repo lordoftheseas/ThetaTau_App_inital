@@ -30,7 +30,7 @@ const PillarsScreen = ({ navigation }) => {
       description: 'The brothers of Theta Tau Mu Gamma Chapter works hard to impact the world through acts of service...',
       images: [
         require('../assets/biglil.jpg'), // change this to right pic
-        require('../assets/biglil.jpg'), // change this to right pic
+        require('../assets/biglil.jpg'), // change this to right pic2
         // Add more images as needed
       ],
     },
