@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard, Image, TouchableWithoutFeedback } from 'react-native';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      // Dismiss the keyboard when it is hidden
+      Keyboard.dismiss();
+    });
+
+    return () => {
+      // Remove the listener when the component is unmounted
+      keyboardDidHideListener.remove();
+    };
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -13,19 +27,19 @@ const LoginScreen = ({ navigation }) => {
         email: username,
         password: password,
       });
-  
+
       const { success, user, message } = response.data;
-  
+
       if (success) {
         console.log('Login successful');
-  
+
         // Dynamically navigate based on the user's role
         if (user.role === 'admin') {
           // Start a meeting and get the meeting code
           const meetingResponse = await axios.post('http://127.0.0.1:3001/start-meeting', {
             meetingId: user.id, // Add a field for user ID (optional)
           });
-  
+
           if (meetingResponse.data.success) {
             const meetingCode = meetingResponse.data.meetingCode;
             navigation.navigate('StartMeeting', { meetingCode });
@@ -44,29 +58,44 @@ const LoginScreen = ({ navigation }) => {
       setErrorMessage('Error connecting to the server. Please try again.');
     }
   };
-  
-  
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text.toLowerCase())}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-        onChangeText={(text) => setPassword(text.toLowerCase())}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
 
-      {/* Display error message for incorrect credentials or server error */}
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-    </View>
+  const handleContainerPress = (event) => {
+    // Dismiss the keyboard only if the target is not an input field or button
+    if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'BUTTON') {
+      Keyboard.dismiss();
+    }
+  };
+
+  return (
+    <TouchableWithoutFeedback onPress={handleContainerPress}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Login</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          onChangeText={(text) => setUsername(text.toLowerCase())}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          onTouchStart={() => Keyboard.dismiss()} // Dismiss the keyboard on password input tap
+          onChangeText={(text) => setPassword(text.toLowerCase())}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+        {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+          <Image
+            source={require('../assets/homegear.png')} // Replace with your home button image path
+            style={styles.homeButtonImage}
+          />
+        </TouchableOpacity>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -99,6 +128,16 @@ const styles = StyleSheet.create({
   errorMessage: {
     color: 'red',
     marginTop: 10,
+  },
+  homeButton: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 20,
+  },
+  homeButtonImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
   },
 });
 
