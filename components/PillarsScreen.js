@@ -44,7 +44,10 @@ const PillarsScreen = ({ navigation }) => {
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Pillars</Text>
           </View>
-          
+          {/* Back Button */}
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+          </TouchableOpacity>
           {pillarData.map((pillar, index) => (
             <View key={index} style={styles.pillarContainer}>
               <View style={styles.pillarTitleContainer}>
@@ -64,9 +67,9 @@ const PillarsScreen = ({ navigation }) => {
           ))}
 
           {/* Home Button */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
             <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -146,16 +149,27 @@ const styles = StyleSheet.create({
   swiperContainer: {
     height: 300,
   },
-  homeButton: {
+  backButton: {
     position: 'absolute',
-    alignSelf: 'center',
-    bottom: 20,
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
-  homeButtonImage: {
-    width: 100,
-    height: 100,
+  backButtonImage: {
+    width: 40,
+    height: 40,
     resizeMode: 'contain',
   },
+  // homeButton: {
+  //   position: 'absolute',
+  //   alignSelf: 'center',
+  //   bottom: 20,
+  // },
+  // homeButtonImage: {
+  //   width: 100,
+  //   height: 100,
+  //   resizeMode: 'contain',
+  // },
 });
 
 export default PillarsScreen;
