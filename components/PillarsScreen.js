@@ -21,7 +21,7 @@ const PillarsScreen = ({ navigation }) => {
       description: 'The brothers of Theta Tau Mu Gamma Chapter participate in numerous professional development opportunities...',
       images: [
         require('../assets/biglil.jpg'), // change this to right pic
-        require('../assets/biglil.jpg'), // change this to right pic
+        require('../assets/biglil.jpg'), // change this to right pic 2
         // Add more images as needed
       ],
     },
