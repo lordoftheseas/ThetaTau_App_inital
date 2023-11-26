@@ -45,7 +45,9 @@ const EventsScreen = ({ navigation }) => {
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
           {/* Event Header */}
-          <Text style={styles.headerText}>Events</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Events</Text>
+          </View>
           {/* Back Button */}
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
@@ -86,12 +88,19 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
   },
-  headerText: {
-    fontSize: 22,
+  titleContainer: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginTop: 20,
+    borderRadius: 10,
+    alignSelf: 'center', // Ensure the title container is centered
+  },
+  title: {
+    fontSize: 24,
     fontWeight: 'bold',
-    color: 'maroon',
+    color: 'white',
     textAlign: 'center',
-    marginVertical: 20,
   },
   eventItem: {
     alignItems: 'center',
@@ -102,6 +111,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
+    paddingVertical: 10,
   },
   eventImage: {
     width: '90%',
