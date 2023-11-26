@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient'; // Added import
 import axios from 'axios';
 
 const LoginScreen = ({ navigation }) => {
@@ -47,38 +48,62 @@ const LoginScreen = ({ navigation }) => {
   
   
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text.toLowerCase())}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry={true}
-        onChangeText={(text) => setPassword(text.toLowerCase())}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+    <LinearGradient
+      colors={['#ffffff', '#767676']} // Gradient colors, same as EnterMeetingCodePage
+      style={styles.linearGradient}
+    >
+      <View style={styles.container}>
+        <Image source={require('../assets/R.png')} style={styles.logo} />
+        <Text style={styles.title}>Login</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          onChangeText={(text) => setUsername(text.toLowerCase())}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={true}
+          onChangeText={(text) => setPassword(text.toLowerCase())}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
 
-      {/* Display error message for incorrect credentials or server error */}
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-    </View>
+        {/* Display error message for incorrect credentials or server error */}
+        {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+
+        {/* Home Button */}
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+          <Image
+            source={require('../assets/homegear.png')}
+            style={styles.homeButtonImage}
+          />
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    width: 150,
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
   title: {
     fontSize: 24,
     marginBottom: 16,
+    color: 'black', // Set the text color to black
   },
   input: {
     height: 40,
@@ -87,18 +112,30 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
+    backgroundColor: 'white', // Set the background of textboxes to white
+    color: 'black', // Set the text color of the textboxes to black
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#ddd', // Changed to match EnterMeetingCodePage
     padding: 10,
     borderRadius: 5,
   },
   buttonText: {
-    color: 'white',
+    color: 'black', // Changed to match EnterMeetingCodePage
   },
   errorMessage: {
     color: 'red',
     marginTop: 10,
+  },
+  homeButton: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 20,
+  },
+  homeButtonImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
   },
 });
 

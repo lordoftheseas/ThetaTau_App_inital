@@ -7,7 +7,7 @@ const StartMeetingPage = ({ navigation, route }) => {
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']} // Gradient colors
+      colors={['#ffffff', '#767676']} 
       style={styles.linearGradient}
     >
       <View style={styles.container}>
@@ -16,8 +16,8 @@ const StartMeetingPage = ({ navigation, route }) => {
         <Text>Meeting Code: {meetingCode}</Text>
         
         {/* Button to navigate to CreatePoll.js */}
-        <TouchableOpacity onPress={() => navigation.navigate('CreatePoll')} style={styles.button}>
-          <Text>Create Poll</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('CreatePoll')} style={styles.createPollButton}>
+          <Text style={styles.createPollButtonText}>Create Poll</Text>
         </TouchableOpacity>
 
         {/* Home Button */}
@@ -42,16 +42,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 150, // Adjust as needed
-    height: 150, // Adjust as needed
+    width: 150, 
+    height: 150, 
     resizeMode: 'contain',
     marginBottom: 20,
   },
-  button: {
+  createPollButton: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#ddd',
+    backgroundColor: 'blue',
     borderRadius: 5,
+  },
+  createPollButtonText: {
+    color: 'white',
   },
   homeButton: {
     position: 'absolute',

@@ -10,6 +10,7 @@ import PillarsScreen from './components/PillarsScreen';
 import StartMeetingPage from './components/StartMeetingPage';
 import EnterMeetingCodePage from './components/EnterMeetingCodePage';
 import PollingPage from './components/PollingPage';
+import CreatePoll from './components/CreatePoll'; // Import CreatePoll
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,6 +22,7 @@ const AuthStack = () => {
       <Stack.Screen name="StartMeeting" component={StartMeetingPage} />
       <Stack.Screen name="EnterMeetingCode" component={EnterMeetingCodePage} />
       <Stack.Screen name="Polling" component={PollingPage} />
+      <Stack.Screen name="CreatePoll" component={CreatePoll} /> 
     </Stack.Navigator>
   );
 };
