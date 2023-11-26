@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Pressable,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -31,7 +32,7 @@ const eCouncilMembers = [
   // ... other members added here
 ];
 
-
+// change the id to roll number
 const brothers = [
   { id: '7', name: 'Alex Johnson',image: require('../assets/Brothers/gabriel.png')},
   { id: '8', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},

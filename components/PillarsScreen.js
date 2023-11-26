@@ -40,14 +40,16 @@ const PillarsScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
       <SafeAreaView style={styles.safeArea}>
+        {/* Title and Back Button */}
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Pillars</Text>
+        </View>
+        {/* Back Button */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+        </TouchableOpacity>
+        {/* Scrollable Content */}
         <ScrollView style={styles.scrollViewContent}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Pillars</Text>
-          </View>
-          {/* Back Button */}
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
-          </TouchableOpacity>
           {pillarData.map((pillar, index) => (
             <View key={index} style={styles.pillarContainer}>
               <View style={styles.pillarTitleContainer}>
@@ -65,11 +67,7 @@ const PillarsScreen = ({ navigation }) => {
               </View>
             </View>
           ))}
-
-          {/* Home Button */}
-          {/* <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
-            <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
-          </TouchableOpacity> */}
+          
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -89,10 +87,11 @@ const styles = StyleSheet.create({
   titleContainer: {
     backgroundColor: '#900807',
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginTop: 20,
+    paddingVertical: 15,
+    marginTop: 10,
     borderRadius: 10,
-    alignSelf: 'center',
+    alignSelf: 'stretch',
+    height: 60,
   },
   title: {
     fontSize: 24,
@@ -151,9 +150,9 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 20,
+    top: 80,
     left: 20,
-    zIndex: 1,
+    zIndex: 10,
   },
   backButtonImage: {
     width: 40,
