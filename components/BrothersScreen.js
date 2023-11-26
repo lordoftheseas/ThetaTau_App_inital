@@ -60,6 +60,10 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* Brothers Profiles */}
           <Text style={styles.headerText}>Brothers</Text>
+          {/* Back Button */}
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+          </TouchableOpacity>
           {brothers.map((brother) => (
             <TouchableOpacity
               key={brother.id}
@@ -75,7 +79,7 @@ const BrothersScreen = ({ navigation }) => {
         </ScrollView>
 
         {/* Home Button */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate('Home')}
           style={styles.homeButton}
         >
@@ -83,7 +87,7 @@ const BrothersScreen = ({ navigation }) => {
             source={require('../assets/homegear.png')} // Replace with your actual image path
             style={styles.homeButtonImage}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </SafeAreaView>
     </LinearGradient>
   );
@@ -148,7 +152,17 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: 'contain',
   },
-
+  backButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
+  },
+  backButtonImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
 });
 
 export default BrothersScreen;
