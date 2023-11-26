@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#900807',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    marginTop: 20,
+    marginTop: 12,
     borderRadius: 10,
     alignSelf: 'center', // Ensure the title container is centered
   },
@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-    paddingVertical: 10,
+    marginBottom: -10,
+    marginTop: 20,
   },
   eventImage: {
     width: '90%',
@@ -122,16 +123,16 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   
-  homeButton: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 20,
-  },
-  homeButtonImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
-  },
+  // homeButton: {
+  //   position: 'absolute',
+  //   alignSelf: 'center',
+  //   bottom: 20,
+  // },
+  // homeButtonImage: {
+  //   width: 100,
+  //   height: 100,
+  //   resizeMode: 'contain',
+  // },
   swiperContainer: {
     height: 300,
   },
