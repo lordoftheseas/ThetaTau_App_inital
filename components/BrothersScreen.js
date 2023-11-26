@@ -33,11 +33,11 @@ const eCouncilMembers = [
 
 
 const brothers = [
-  { id: '1', name: 'Alex Johnson',image: require('../assets/Brothers/gabriel.png')},
-  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
-  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
-  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
-  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '7', name: 'Alex Johnson',image: require('../assets/Brothers/gabriel.png')},
+  { id: '8', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '9', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '10', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '11', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
   // ... other brothers
 ];
 
