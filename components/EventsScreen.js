@@ -5,6 +5,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
 
 const EventsScreen = ({ navigation }) => {
+  // Sample data for event images and descriptions
+  const eventData = [
+    {
+      title: 'Big Little Dinner',
+      images: [
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        // Add more images as needed
+      ],
+      description: 'Description for Big Little Dinner. This is a great event for...',
+    },
+    // Add more event data as needed
+  ];
+
   return (
     <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
       <SafeAreaView style={styles.safeArea}>
@@ -12,61 +28,29 @@ const EventsScreen = ({ navigation }) => {
           {/* Event Header */}
           <Text style={styles.headerText}>Events</Text>
 
-          {/* Event Swiper */}
-          <Text style={styles.eventTitle}>Big Little Dinner</Text>
-          <Swiper style={styles.swiperContainer} showsButtons={false}>
-            {/* Big Little Dinner */}
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
+          {/* Description Section */}
+          {eventData.map((event, index) => (
+            <View key={index}>
+              {/* Event Swiper */}
+              <Text style={styles.eventTitle}>{event.title}</Text>
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.descriptionText}>{event.description}</Text>
+              </View>
+              <Swiper style={styles.swiperContainer} showsButtons={false}>
+                {event.images.map((image, imageIndex) => (
+                  <View key={imageIndex} style={styles.eventItem}>
+                    <Image source={image} style={styles.eventImage} />
+                  </View>
+                ))}
+              </Swiper>
             </View>
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
+          ))}
+          </ScrollView>
 
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
-            <View style={styles.eventItem}>
-              <Image
-                source={require('../assets/biglil.jpg')} // Replace with your actual image path
-                style={styles.eventImage}
-              />
-            </View>
-            {/* Additional events can be added following the same pattern */}
-          </Swiper>
-        </ScrollView>
-
-        {/* Home Button */}
-        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
-          <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
-        </TouchableOpacity>
+          {/* Home Button */}
+          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+            <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
+          </TouchableOpacity>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -81,7 +65,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flex: 1,
-    paddingHorizontal: 10, // Add some padding if needed
+    paddingHorizontal: 10,
   },
   headerText: {
     fontSize: 22,
@@ -91,22 +75,32 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   eventItem: {
-    alignItems: 'center', // Centering event item
+    alignItems: 'center',
     marginVertical: 10,
   },
   eventTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
-    textAlign: 'center', // Centering title
+    textAlign: 'center',
   },
   eventImage: {
-    width: '90%', // Adjust width as needed
-    height: 200, // Adjust height as needed
+    width: '90%',
+    height: 200,
     resizeMode: 'cover',
     borderWidth: 1,
-    borderColor: 'grey', // Border color for the image
+    borderColor: 'grey',
     marginVertical: 10,
+  },
+  descriptionContainer: {
+    backgroundColor: 'gold',
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 8,
+  },
+  descriptionText: {
+    color: 'red',
+    textAlign: 'center',
   },
   homeButton: {
     position: 'absolute',
@@ -114,12 +108,12 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   homeButtonImage: {
-    width: 100, // Adjust the size as needed
-    height: 100, // Adjust the size as needed
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   },
   swiperContainer: {
-    height: 300, // Adjust the height as needed
+    height: 300,
   },
   paginationContainer: {
     position: 'absolute',
