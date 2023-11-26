@@ -10,15 +10,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const placeholderImages = [
-  require('../assets/Brothers/aryaman_ghosh.png'),
-  require('../assets/Brothers/gabriel.png'),
-  require('../assets/Brothers/daniel_klein.png'), 
-  require('../assets/Brothers/yuanjie.png'),
-  require('../assets/Brothers/Marissa_Gabbamonte.jpeg'),
-  require('../assets/Brothers/3Karen_Cheng.png'),
-];
-
+// array to update pictures of the brothers
 const brotherImages = [
   require('../assets/Brothers/aryaman_ghosh.png'),
   require('../assets/Brothers/gabriel.png'),
@@ -30,18 +22,19 @@ const brotherImages = [
 
 // Placeholder data for E-Council and Brothers
 const eCouncilMembers = [
-  { id: '1', name: 'Aryaman Ghosh', role: 'Regent', className: 'Chi Beta' },
-  { id: '2', name: 'Gabriel Thornton', role: 'Vice Regent',className: 'Phi Beta' },
-  { id: '3', name: 'Daniel Klein', role: 'Pledge Marshal',className: 'Phi Beta' },
-  { id: '4', name: 'Yuanjie Xu', role: 'Treasurer',className: 'Phi Beta' },
-  { id: '5', name: 'Marissa Gabbamonte', role: 'Corresponding Secretary',className: 'Upsilon Beta' },
-  { id: '6', name: 'Karen Cheng', role: 'Scribe',className: 'Psi Beta' },
+  { id: '1', name: 'Aryaman Ghosh', role: 'Regent', className: 'Chi Beta', image: require('../assets/Brothers/aryaman_ghosh.png') },
+  { id: '2', name: 'Gabriel Thornton', role: 'Vice Regent', className: 'Phi Beta', image: require('../assets/Brothers/gabriel.png') },
+  { id: '3', name: 'Daniel Klein', role: 'Pledge Marshal', className: 'Phi Beta', image: require('../assets/Brothers/daniel_klein.png') },
+  { id: '4', name: 'Yuanjie Xu', role: 'Treasurer', className: 'Phi Beta', image: require('../assets/Brothers/yuanjie.png') },
+  { id: '5', name: 'Marissa Gabbamonte', role: 'Corresponding Secretary', className: 'Upsilon Beta', image: require('../assets/Brothers/Marissa_Gabbamonte.jpeg') },
+  { id: '6', name: 'Karen Cheng', role: 'Scribe', className: 'Psi Beta', image: require('../assets/Brothers/3Karen_Cheng.png') },
   // ... other members
 ];
 
+
 const brothers = [
-  { id: '1', name: 'Alex Johnson'},
-  { id: '2', name: 'Michael Brown'},
+  { id: '1', name: 'Alex Johnson',image: require('../assets/Brothers/gabriel.png')},
+  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
   // ... other brothers
 ];
 
@@ -66,20 +59,20 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* E-Council Profiles */}
           <Text style={styles.headerText}>E-Council</Text>
-          {eCouncilMembers.map((member, index) => (
-            <TouchableOpacity
-              key={member.id}
-              style={styles.profileContainer}
-              onPress={() => onProfilePress(member.name, member.role, member.className)}
-            >
-              <Image source={placeholderImages[index % placeholderImages.length]} style={styles.profileImage} />
-              <View style={styles.profileTextContainer}>
-                <Text style={styles.profileName}>{member.name}</Text>
-                <Text style={styles.profileRole}>{member.role}</Text>
-                <Text style={styles.profileRole}>{member.className}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+            {eCouncilMembers.map((member) => (
+              <TouchableOpacity
+                key={member.id}
+                style={styles.profileContainer}
+                onPress={() => onProfilePress(member.name, member.role, member.className)}
+              >
+                <Image source={member.image} style={styles.profileImage} />
+                <View style={styles.profileTextContainer}>
+                  <Text style={styles.profileName}>{member.name}</Text>
+                  <Text style={styles.profileRole}>{member.role}</Text>
+                  <Text style={styles.profileRole}>{member.className}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
 
           {/* Brothers Profiles */}
           <Text style={styles.headerText}>Brothers</Text>
@@ -87,13 +80,13 @@ const BrothersScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
           </TouchableOpacity>
-          {brothers.map((brother, index) => (
+          {brothers.map((brother) => (
             <TouchableOpacity
               key={brother.id}
               style={styles.profileContainer}
               onPress={() => onProfilePress(brother.name, brother.role)}
             >
-            <Image source={placeholderImages[index % placeholderImages.length]} style={styles.profileImage} />
+            <Image source={brother.image} style={styles.profileImage} />
               <View style={styles.profileTextContainer}>
                 <Text style={styles.profileName}>{brother.name}</Text>
               </View>
