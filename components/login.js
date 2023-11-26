@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard, Image, TouchableWithoutFeedback } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -11,15 +12,14 @@ const LoginScreen = () => {
 
   useEffect(() => {
     const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-      // Dismiss the keyboard when it is hidden
       Keyboard.dismiss();
     });
 
     return () => {
-      // Remove the listener when the component is unmounted
       keyboardDidHideListener.remove();
     };
   }, []);
+
 
   const handleLogin = async () => {
     try {
@@ -59,51 +59,63 @@ const LoginScreen = () => {
     }
   };
 
-  const handleContainerPress = (event) => {
-    // Dismiss the keyboard only if the target is not an input field or button
-    if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'BUTTON') {
-      Keyboard.dismiss();
-    }
+  const handleContainerPress = () => {
+    Keyboard.dismiss();
   };
 
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          onChangeText={(text) => setUsername(text.toLowerCase())}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}
-          onTouchStart={() => Keyboard.dismiss()} // Dismiss the keyboard on password input tap
-          onChangeText={(text) => setPassword(text.toLowerCase())}
-        />
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+      <LinearGradient
+        colors={['#ffffff', '#767676']} // Gradient colors
+        style={styles.linearGradient}
+      >
+        <View style={styles.container}>
+          <Image source={require('../assets/R.png')} style={styles.logo} />
 
-        {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-
-        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
-          <Image
-            source={require('../assets/homegear.png')} // Replace with your home button image path
-            style={styles.homeButtonImage}
+          <Text style={styles.title}>Login</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Username"
+            onChangeText={(text) => setUsername(text.toLowerCase())}
           />
-        </TouchableOpacity>
-      </View>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}
+            onChangeText={(text) => setPassword(text.toLowerCase())}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+
+          {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+
+          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+            <Image
+              source={require('../assets/homegear.png')} // Replace with your home button image path
+              style={styles.homeButtonImage}
+            />
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 150, // Adjust as needed
+    height: 150, // Adjust as needed
+    resizeMode: 'contain',
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -118,7 +130,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'darkred', // Changed color to dark red
     padding: 10,
     borderRadius: 5,
   },

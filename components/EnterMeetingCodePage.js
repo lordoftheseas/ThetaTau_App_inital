@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
 
 const EnterMeetingCodePage = ({ navigation }) => {
@@ -11,7 +12,7 @@ const EnterMeetingCodePage = ({ navigation }) => {
       const response = await axios.post('http://127.0.0.1:3001/verify-meeting-code', {
         meetingCode,
         // Add the user ID or any other identifier as meetingId
-        meetingId: user.id, // Assuming user has an 'id' property, replace it with the actual property name
+        meetingId: user.id, // Replace 'user.id' with the actual user ID
       });
   
       if (response.data.success) {
@@ -26,31 +27,44 @@ const EnterMeetingCodePage = ({ navigation }) => {
       setErrorMessage('Error connecting to the server. Please try again.');
     }
   };
-  
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Enter Meeting Code</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Meeting Code"
-        onChangeText={(text) => setMeetingCode(text)}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleEnterMeetingCode}>
-        <Text style={styles.buttonText}>Enter</Text>
-      </TouchableOpacity>
+    <LinearGradient
+      colors={['#ffffff', '#767676']} // Gradient colors
+      style={styles.linearGradient}
+    >
+      <View style={styles.container}>
+        <Image source={require('../assets/R.png')} style={styles.logo} />
+        <Text style={styles.title}>Enter Meeting Code</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Meeting Code"
+          onChangeText={(text) => setMeetingCode(text)}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleEnterMeetingCode}>
+          <Text style={styles.buttonText}>Enter</Text>
+        </TouchableOpacity>
 
-      {/* Display error message for incorrect meeting code or server error */}
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-    </View>
+        {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
+      </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 150, // Adjust the size as needed
+    height: 150, // Adjust the size as needed
+    resizeMode: 'contain',
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
