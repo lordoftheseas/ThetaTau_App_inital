@@ -10,31 +10,53 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+const placeholderImages = [
+  require('../assets/Brothers/aryaman_ghosh.png'),
+  require('../assets/Brothers/gabriel.png'),
+  require('../assets/Brothers/daniel_klein.png'), 
+  require('../assets/Brothers/yuanjie.png'),
+  require('../assets/Brothers/Marissa_Gabbamonte.jpeg'),
+  require('../assets/Brothers/3Karen_Cheng.png'),
+];
+
+const brotherImages = [
+  require('../assets/Brothers/aryaman_ghosh.png'),
+  require('../assets/Brothers/gabriel.png'),
+  // require('../assets/Brothers/daniel_klein.png'), 
+  // require('../assets/Brothers/yuanjie.png'),
+  // require('../assets/Brothers/Marissa_Gabbamonte.jpeg'),
+  // require('../assets/Brothers/3Karen_Cheng.png'),
+];
+
 // Placeholder data for E-Council and Brothers
 const eCouncilMembers = [
-  { id: '1', name: 'John Doe', role: 'President' },
-  { id: '2', name: 'Jane Smith', role: 'Vice President' },
+  { id: '1', name: 'Aryaman Ghosh', role: 'Regent', className: 'Chi Beta' },
+  { id: '2', name: 'Gabriel Thornton', role: 'Vice Regent',className: 'Phi Beta' },
+  { id: '3', name: 'Daniel Klein', role: 'Pledge Marshal',className: 'Phi Beta' },
+  { id: '4', name: 'Yuanjie Xu', role: 'Treasurer',className: 'Phi Beta' },
+  { id: '5', name: 'Marissa Gabbamonte', role: 'Corresponding Secretary',className: 'Upsilon Beta' },
+  { id: '6', name: 'Karen Cheng', role: 'Scribe',className: 'Psi Beta' },
   // ... other members
 ];
 
 const brothers = [
-  { id: '1', name: 'Alex Johnson' },
-  { id: '2', name: 'Michael Brown' },
+  { id: '1', name: 'Alex Johnson'},
+  { id: '2', name: 'Michael Brown'},
   // ... other brothers
 ];
 
 const BrothersScreen = ({ navigation }) => {
 
-  const onProfilePress = (name, role) => {
+  const onProfilePress = (name, role, className) => {
     // Handle the profile press here
     // For example, navigate to a profile detail screen
     // navigation.navigate('ProfileDetail', { name, role });
-    console.log(name, role); // Just for demonstration
+    console.log(name, role, className); // Just for demonstration
   };
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']} // Gradient colors
+      colors={['#ffffff', '#ffffff']} // Gradient colors
       style={styles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -44,16 +66,17 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* E-Council Profiles */}
           <Text style={styles.headerText}>E-Council</Text>
-          {eCouncilMembers.map((member) => (
+          {eCouncilMembers.map((member, index) => (
             <TouchableOpacity
               key={member.id}
               style={styles.profileContainer}
-              onPress={() => onProfilePress(member.name, member.role)}
+              onPress={() => onProfilePress(member.name, member.role, member.className)}
             >
-              <Image source={require('../assets/R.png')} style={styles.profileImage} />
+              <Image source={placeholderImages[index % placeholderImages.length]} style={styles.profileImage} />
               <View style={styles.profileTextContainer}>
                 <Text style={styles.profileName}>{member.name}</Text>
                 <Text style={styles.profileRole}>{member.role}</Text>
+                <Text style={styles.profileRole}>{member.className}</Text>
               </View>
             </TouchableOpacity>
           ))}
@@ -64,13 +87,13 @@ const BrothersScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
           </TouchableOpacity>
-          {brothers.map((brother) => (
+          {brothers.map((brother, index) => (
             <TouchableOpacity
               key={brother.id}
               style={styles.profileContainer}
               onPress={() => onProfilePress(brother.name, brother.role)}
             >
-              <Image source={require('../assets/R.png')} style={styles.profileImage} />
+            <Image source={placeholderImages[index % placeholderImages.length]} style={styles.profileImage} />
               <View style={styles.profileTextContainer}>
                 <Text style={styles.profileName}>{brother.name}</Text>
               </View>
@@ -118,17 +141,25 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    paddingHorizontal: 10, // Add horizontal padding for profile items
+    borderWidth: 1, // Set border width.
+    flexDirection: 'row', // Arrange children in a row.
+    borderColor: '#000', // Set border color.
+    padding: 10, // Set padding to create space around the content.
+    marginBottom: 10, // Set bottom margin to create space between the boxes.
+    borderRadius: 5, // Optional: if you want rounded corners.
   },
+  // profileContainer: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingVertical: 10,
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: '#ccc',
+  //   paddingHorizontal: 10, // Add horizontal padding for profile items
+  // },
   profileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     marginRight: 10,
   },
   profileTextContainer: {
