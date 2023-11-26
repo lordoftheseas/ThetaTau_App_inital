@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   homeButtonImage: {
-    width: 60, // Adjust the size as needed
-    height: 60, // Adjust the size as needed
+    width: 100, // Adjust the size as needed
+    height: 100, // Adjust the size as needed
     resizeMode: 'contain',
   }
 });

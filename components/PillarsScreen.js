@@ -1,21 +1,21 @@
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const PillarsScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#ffffff', '#767676']} // Gradient colors
-        style={styles.linearGradient}
-      >
+    <LinearGradient
+      colors={['#ffffff', '#767676']} // Gradient colors
+      style={styles.linearGradient}
+    >
+      <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Pillars</Text>
           </View>
-          
-          {/* Pillar: Brotherhood */}
-          <View style={styles.pillarContainer}>
+         {/* Pillar: Brotherhood */}
+         <View style={styles.pillarContainer}>
             <Text style={styles.pillarTitle}>Brotherhood</Text>
             <View style={styles.pillarContent}>
               <Text style={styles.pillarText}>The brothers of Theta Tau Mu Gamma Chapter value strong bonds of friendship among its members...</Text>
@@ -38,40 +38,42 @@ const PillarsScreen = ({ navigation }) => {
             </View>
           </View>
         </ScrollView>
-      </LinearGradient>
 
-      {/* Home Button */}
-      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
-        <Image
-          source={require('../assets/homegear.png')} // Replace with your home button image path
-          style={styles.homeButtonImage}
-        />
-      </TouchableOpacity>
-    </View>
+        {/* Home Button */}
+        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
+          <Image
+            source={require('../assets/homegear.png')} // Replace with your home button image path
+            style={styles.homeButtonImage}
+          />
+        </TouchableOpacity>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  linearGradient: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#D3D3D3',
+  },
+  safeArea: {
+    flex: 1,
   },
   scrollViewContent: {
-    flex: 1,
+    paddingHorizontal: 10, // Add horizontal padding if needed
   },
   titleContainer: {
-    backgroundColor: '#900807', // Background color for the title container
+    backgroundColor: '#900807',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    marginBottom: 20,
-    borderRadius: 10, // Curved edges for the title container
+    marginTop: 20,
+    borderRadius: 10,
+    alignSelf: 'center', // Ensure the title container is centered
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white', // Text color for the title
+    color: 'white',
+    textAlign: 'center',
   },
   pillarContainer: {
     marginBottom: 20,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10, // Curved edges for the title container,
+    borderRadius: 10,
   },
   pillarText: {
     fontSize: 16,
@@ -104,8 +106,8 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   homeButtonImage: {
-    width: 250, // Increase the width as needed
-    height: 250, // Increase the height as needed
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   },
 });

@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,18 +7,16 @@ import BrothersScreen from './components/BrothersScreen';
 import LoginScreen from './components/login';
 import EventsScreen from './components/EventsScreen';
 import PillarsScreen from './components/PillarsScreen';
-import StartMeetingPage from './components/StartMeetingPage'; // Add this import
-import EnterMeetingCodePage from './components/EnterMeetingCodePage'; // Add this import
+import StartMeetingPage from './components/StartMeetingPage';
+import EnterMeetingCodePage from './components/EnterMeetingCodePage';
 import PollingPage from './components/PollingPage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-
-
 const AuthStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="StartMeeting" component={StartMeetingPage} />
       <Stack.Screen name="EnterMeetingCode" component={EnterMeetingCodePage} />
@@ -28,26 +25,25 @@ const AuthStack = () => {
   );
 };
 
-
-const MeetingStack = () => {
-  return (
-    <Stack.Navigator initialRouteName="StartMeeting">
-      <Stack.Screen name="StartMeeting" component={StartMeetingPage} />
-      <Stack.Screen name="EnterMeetingCode" component={EnterMeetingCodePage} />
-    </Stack.Navigator>
-  );
-};
-
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false, // This hides the header on all screens within the Tab Navigator
+          tabBarStyle: { display: 'none' }, // This hides the tab bar itself
+        }}
+      >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Brothers" component={BrothersScreen} />
-        {/* Exclude Meeting from the tab bar */}
-        { <Tab.Screen name="Auth" component={AuthStack} /> }
         <Tab.Screen name="Events" component={EventsScreen} />
         <Tab.Screen name="Pillars" component={PillarsScreen} />
+        {/* The AuthStack is now part of the Tab Navigator but with no visible tab due to tabBarButton */}
+        <Tab.Screen
+          name="Auth"
+          component={AuthStack}
+          
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
