@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#900807',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    marginTop: 12,
+    marginTop: 18,
     borderRadius: 10,
     alignSelf: 'center', // Ensure the title container is centered
   },
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   backButtonImage: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
     resizeMode: 'contain',
   },
 });
