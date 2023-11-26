@@ -23,7 +23,7 @@ const AboutPage = ({ navigation }) => {
           <Text style={styles.textBoxText}>
             The purpose of Theta Tau is to develop and maintain a high standard of professional interest among its members, and to unite them in a strong bond of fraternal fellowship.
             {"\n\n"}
-            "Theta Tau, a co-ed professional engineering fraternity, emphasizes academic excellence, professional growth, and community service. Founded in 1904, it offers aspiring engineers a supportive network for personal and professional development. Activities include professional workshops, networking events, and community service projects, fostering leadership and lifelong friendships among members.
+            Theta Tau, a co-ed professional engineering fraternity, emphasizes academic excellence, professional growth, and community service. Founded in 1904, it offers aspiring engineers a supportive network for personal and professional development. Activities include professional workshops, networking events, and community service projects, fostering leadership and lifelong friendships among members.
             {"\n\n"}
             The Theta Tau Mu Gamma Chapter was chartered and certified on April 5th, 2003 at the University at Buffalo in Buffalo, New York. The latest class will currently be Omega Beta.
           </Text>
