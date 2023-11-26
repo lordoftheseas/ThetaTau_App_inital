@@ -20,25 +20,28 @@ const HomePage = ({ navigation }) => {
         
 
         {/* Button Grid Section */}
-        <View style={styles.buttonGrid}>
+        <View style={{flexDirection: 'row',flexWrap: 'wrap',justifyContent: 'space-around', marginBottom: '10%'}}>
           <TouchableOpacity onPress={() => navigation.navigate('Events')}>
             <Image source={require('../assets/HomeScreen/events.png')} style={styles.buttonImage} />
-            <Text>Events</Text>
+            <Text style={styles.buttonLabels}>Events</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('Brothers')}>
             <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.buttonImage} />
-            <Text>Brothers</Text>
+            <Text style={styles.buttonLabels}>Brothers</Text>
           </TouchableOpacity>
+          </View>
+
+          <View style={{flexDirection: 'row-reverse',flexWrap: 'wrap',justifyContent: 'space-around', marginBottom: '20%'}}>
 
           <TouchableOpacity onPress={() => navigation.navigate('Pillars')}>
             <Image source={require('../assets/HomeScreen/pillars.png')} style={styles.buttonImage} />
-            <Text>Pillars</Text>
+            <Text style={styles.buttonLabels}>Pillars</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
             <Image source={require('../assets/HomeScreen/meeting.png')} style={styles.buttonImage} />
-            <Text>Meeting</Text>
+            <Text style={styles.buttonLabels}>Meeting</Text>
           </TouchableOpacity>
         </View>
 
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     fontStyle: 'italic',
-    marginBottom: '1%',
+    marginBottom: '15%',
   },
   buttonGrid: {
     flexDirection: 'column',
@@ -94,8 +97,11 @@ const styles = StyleSheet.create({
   buttonImage: {
     width: 100,
     height: 100,
-    marginBottom: 0,
+    marginRight: 0,
   },
+  buttonLabels: {
+    textAlign: 'center',
+  }
 });
 
 export default HomePage;
