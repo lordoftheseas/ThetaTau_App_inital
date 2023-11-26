@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, TextStyle } from 'react-native';
+
 
 // HomePage Component
 const HomePage = ({ navigation }) => {
@@ -20,22 +21,22 @@ const HomePage = ({ navigation }) => {
 
         {/* Button Grid Section */}
         <View style={styles.buttonGrid}>
-          <TouchableOpacity onPress={() => navigation.navigate('EventsScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Events')}>
             <Image source={require('../assets/HomeScreen/events.png')} style={styles.buttonImage} />
             <Text>Events</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('BrothersScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Brothers')}>
             <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.buttonImage} />
             <Text>Brothers</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('PillarsScreen')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Pillars')}>
             <Image source={require('../assets/HomeScreen/pillars.png')} style={styles.buttonImage} />
             <Text>Pillars</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('AuthStack')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
             <Image source={require('../assets/HomeScreen/meeting.png')} style={styles.buttonImage} />
             <Text>Meeting</Text>
           </TouchableOpacity>
@@ -58,17 +59,19 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: '20%', // Adjust as needed
+    height: '8%', // Adjust as needed
     resizeMode: 'contain',
   },
   title: {
-    fontSize: 24,
-    color: 'red',
+    fontSize: 36,
+    fontStyle: 'Abel',
+    color: '#900807',
     textAlign: 'center',
   },
   chapter: {
     fontSize: 18,
-    color: 'red',
+    color: '#900807',
+    fontFamily: 'Inter',
     textAlign: 'center',
   },
   profession: {
