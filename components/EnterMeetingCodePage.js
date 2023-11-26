@@ -25,7 +25,7 @@ const EnterMeetingCodePage = ({ navigation }) => {
       setErrorMessage('Error connecting to the server. Please try again.');
     }
   };
-
+//comment
   return (
     <LinearGradient
       colors={['#ffffff', '#767676']} // Gradient colors
