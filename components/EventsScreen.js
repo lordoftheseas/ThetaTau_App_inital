@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'rea
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
+import Lightbox from 'react-native-lightbox';
 
 const EventsScreen = ({ navigation }) => {
   // Sample data for event images and descriptions
@@ -15,8 +16,27 @@ const EventsScreen = ({ navigation }) => {
         require('../assets/biglil.jpg'),
         require('../assets/biglil.jpg'),
         // Add more images as needed
-      ],
-      description: 'Description for Big Little Dinner. This is a great event for...',
+      ]
+    },
+    {
+      title: 'Big Little Dinner',
+      images: [
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        // Add more images as needed
+      ]
+    },
+    {
+      title: 'Big Little Dinner',
+      images: [
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        require('../assets/biglil.jpg'),
+        // Add more images as needed
+      ]
     },
     // Add more event data as needed
   ];
@@ -33,9 +53,6 @@ const EventsScreen = ({ navigation }) => {
             <View key={index}>
               {/* Event Swiper */}
               <Text style={styles.eventTitle}>{event.title}</Text>
-              <View style={styles.descriptionContainer}>
-                <Text style={styles.descriptionText}>{event.description}</Text>
-              </View>
               <Swiper style={styles.swiperContainer} showsButtons={false}>
                 {event.images.map((image, imageIndex) => (
                   <View key={imageIndex} style={styles.eventItem}>
@@ -92,16 +109,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     marginVertical: 10,
   },
-  descriptionContainer: {
-    backgroundColor: 'gold',
-    padding: 10,
-    marginBottom: 20,
-    borderRadius: 8,
-  },
-  descriptionText: {
-    color: 'red',
-    textAlign: 'center',
-  },
+  
   homeButton: {
     position: 'absolute',
     alignSelf: 'center',

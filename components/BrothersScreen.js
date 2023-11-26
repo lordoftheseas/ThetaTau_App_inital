@@ -1,10 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { View, Text, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-
-const BrothersScreen = ({ navigation }) => {
-=======
 import {
   View,
   Text,
@@ -38,7 +32,6 @@ const BrothersScreen = ({ navigation }) => {
     console.log(name, role); // Just for demonstration
   };
 
->>>>>>> 3c188f41 (Brothers page for now)
   return (
     <LinearGradient
       colors={['#ffffff', '#767676']} // Gradient colors
@@ -46,16 +39,6 @@ const BrothersScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
-<<<<<<< HEAD
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Theta Tau Brothers</Text>
-            {/* Add content for the brothers screen */}
-          </View>
-        </ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
-          <Image
-            source={require('../assets/homegear.png')} // Replace with your home button image path
-=======
           {/* Top PNG Image */}
           <Image source={require('../assets/R.png')} style={styles.topImage} />
 
@@ -98,7 +81,6 @@ const BrothersScreen = ({ navigation }) => {
         >
           <Image
             source={require('../assets/homegear.png')} // Replace with your actual image path
->>>>>>> 3c188f41 (Brothers page for now)
             style={styles.homeButtonImage}
           />
         </TouchableOpacity>
@@ -109,7 +91,6 @@ const BrothersScreen = ({ navigation }) => {
 
 // Add new styles for profile containers
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   linearGradient: {
     flex: 1,
   },
@@ -117,68 +98,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollViewContent: {
-    paddingHorizontal: 10, // Add horizontal padding if needed
-  },
-  titleContainer: {
-    backgroundColor: '#900807',
+    flex: 1,
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginTop: 20,
-    borderRadius: 10,
-    alignSelf: 'center', // Ensure the title container is centered
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-  },
-  pillarContainer: {
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-  pillarTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 10,
-  },
-  pillarContent: {
-    width: '80%',
-    minHeight: 100,
-    borderWidth: 1,
-    borderColor: '#000000',
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  pillarText: {
-    fontSize: 16,
-    color: '#000000',
-    textAlign: 'center',
-  },
-  homeButton: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 20,
-  },
-  homeButtonImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
-=======
-
-  headerText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: 'maroon',
-    textAlign: 'center',
-    marginVertical: 20,
   },
   topImage: {
     width: '100%',
-    height: 90, // Adjust as needed
+    height: 70, // Adjust as needed
     resizeMode: 'contain',
   },
   profileContainer: {
@@ -194,7 +119,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     marginRight: 10,
->>>>>>> 3c188f41 (Brothers page for now)
   },
   profileTextContainer: {
     justifyContent: 'center',
@@ -213,10 +137,11 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   homeButtonImage: {
-    width: 100, // Adjust the size as needed
-    height: 100, // Adjust the size as needed
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
-  }
+  },
+
 });
 
 export default BrothersScreen;
