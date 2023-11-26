@@ -28,7 +28,7 @@ const eCouncilMembers = [
   { id: '4', name: 'Yuanjie Xu', role: 'Treasurer', className: 'Phi Beta', image: require('../assets/Brothers/yuanjie.png') },
   { id: '5', name: 'Marissa Gabbamonte', role: 'Corresponding Secretary', className: 'Upsilon Beta', image: require('../assets/Brothers/Marissa_Gabbamonte.jpeg') },
   { id: '6', name: 'Karen Cheng', role: 'Scribe', className: 'Psi Beta', image: require('../assets/Brothers/3Karen_Cheng.png') },
-  // ... other members
+  // ... other members added here
 ];
 
 
