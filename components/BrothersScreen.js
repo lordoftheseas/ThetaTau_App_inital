@@ -10,7 +10,7 @@ const BrothersScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
-          <View style={styles.container}>
+          <View style={styles.titleContainer}>
             <Text style={styles.title}>Theta Tau Brothers</Text>
             {/* Add content for the brothers screen */}
           </View>
@@ -27,35 +27,6 @@ const BrothersScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  linearGradient: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-  },
-  scrollViewContent: {
-    flex: 1,
-  },
-  homeButton: {
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-  },
-  homeButtonImage: {
-    width: 50,
-    height: 50,
-    fontSize: 24,
-    marginBottom: 20,
-  },
   linearGradient: {
     flex: 1,
   },
