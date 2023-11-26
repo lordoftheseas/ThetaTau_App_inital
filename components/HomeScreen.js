@@ -33,8 +33,8 @@ const HomePage = ({ navigation }) => {
           </TouchableOpacity>
           <View style={{ width: 50 }} />
           <TouchableOpacity onPress={() => navigation.navigate('Brothers')}>
-            <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.buttonImage} />
-            <Text style={styles.buttonLabels}>Brothers</Text>
+            <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.brothers} />
+            <Text style={styles.brothersLabels}>Brothers</Text>
           </TouchableOpacity>
           </View>
 
@@ -106,7 +106,15 @@ const styles = StyleSheet.create({
   buttonImage: {
     width: 100,
     height: 100,
-    marginRight: 0,
+  },
+  brothers: {
+    marginTop: 5,
+    width: 92,
+    height: 92,
+  },
+  brothersLabels: {
+    textAlign: 'center',
+    marginTop: 5,
   },
   buttonLabels: {
     textAlign: 'center',
