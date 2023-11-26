@@ -46,7 +46,10 @@ const EventsScreen = ({ navigation }) => {
         <ScrollView style={styles.scrollViewContent}>
           {/* Event Header */}
           <Text style={styles.headerText}>Events</Text>
-
+          {/* Back Button */}
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+          </TouchableOpacity>
           {/* Description Section */}
           {eventData.map((event, index) => (
             <View key={index}>
@@ -63,10 +66,10 @@ const EventsScreen = ({ navigation }) => {
           ))}
           </ScrollView>
 
-          {/* Home Button */}
+          {/* Home Button
           <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeButton}>
             <Image source={require('../assets/homegear.png')} style={styles.homeButtonImage} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </SafeAreaView>
     </LinearGradient>
   );
@@ -122,16 +125,16 @@ const styles = StyleSheet.create({
   swiperContainer: {
     height: 300,
   },
-  paginationContainer: {
+  backButton: {
     position: 'absolute',
-    bottom: 10,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
-  paginationText: {
-    color: 'white',
-    fontSize: 16,
+  backButtonImage: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
 });
 
