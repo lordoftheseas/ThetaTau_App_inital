@@ -3,7 +3,6 @@ import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'rea
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
-import Lightbox from 'react-native-lightbox';
 
 const EventsScreen = ({ navigation }) => {
   // Sample data for event images and descriptions
