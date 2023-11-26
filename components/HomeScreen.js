@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, TextStyle } from 'reac
 // HomePage Component
 const HomePage = ({ navigation }) => {
   return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'grey' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
         {/* Top PNG Image */}
         <Image source={require('../assets/R.png')} style={styles.topImage} />
 
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
   buttonImage: {
     width: 100,
     height: 100,
-    marginRight: 0,
   },
   buttonLabels: {
     textAlign: 'center',
