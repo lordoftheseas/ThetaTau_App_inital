@@ -35,6 +35,9 @@ const eCouncilMembers = [
 const brothers = [
   { id: '1', name: 'Alex Johnson',image: require('../assets/Brothers/gabriel.png')},
   { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
+  { id: '2', name: 'Michael Brownie',image: require('../assets/Brothers/aryaman_ghosh.png')},
   // ... other brothers
 ];
 
