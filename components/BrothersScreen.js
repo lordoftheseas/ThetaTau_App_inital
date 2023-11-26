@@ -106,6 +106,13 @@ const styles = StyleSheet.create({
     height: 70, // Adjust as needed
     resizeMode: 'contain',
   },
+  headerText: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: 'maroon',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
   profileContainer: {
     flexDirection: 'row',
     alignItems: 'center',
