@@ -78,14 +78,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontStyle: 'Abel',
     color: '#900807',
     textAlign: 'center',
   },
   chapter: {
     fontSize: 18,
     color: '#900807',
-    fontFamily: 'Inter',
     textAlign: 'center',
   },
   profession: {
