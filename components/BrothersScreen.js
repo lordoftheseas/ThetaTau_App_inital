@@ -104,6 +104,7 @@ const BrothersScreen = ({ navigation }) => {
                 <View style={styles.profileTextContainer}>
                   <Text style={isDarkMode ? stylesDark.profileNameDark : styles.profileName}>{brother.name}</Text>
                   <Text style={isDarkMode ? stylesDark.profileTitleDark : styles.profileTitle}>{brother.title}</Text>
+                  <Text style={isDarkMode ? stylesDark.classTitle : styles.classTitle}>{brother.classname}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -152,6 +153,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   profileTitle: {
+    fontSize: 14,
+    color: '#501315',
+    fontWeight: 'bold',
+  },
+  classTitle: {
     fontSize: 14,
     color: '#501315',
   },
@@ -239,6 +245,11 @@ const stylesDark = StyleSheet.create({
     color: "#900807"
   },
   profileTitleDark: {
+    fontSize: 14,
+    color: '#ffa700', //gold
+    fontWeight: 'bold',
+  },
+  classTitle: {
     fontSize: 14,
     color: '#ffa700', //gold
   },
