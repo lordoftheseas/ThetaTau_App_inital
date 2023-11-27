@@ -11,8 +11,12 @@ const PillarsScreen = ({ navigation }) => {
       title: 'Brotherhood',
       description: 'The brothers of Theta Tau Mu Gamma Chapter value strong bonds of friendship among its members...',
       images: [
-        require('../assets/Events/professionalism1.png'), // change this to right pic
-        require('../assets/biglil.jpg'), // change this to right pic
+        require('../assets/Events/brotherhood1.png'), // change this to right pic
+        require('../assets/Events/brotherhood4.jpg'),
+        require('../assets/Events/brotherhood5.jpg'),
+        require('../assets/Events/brotherhood2.png'),
+        
+        // change this to right pic
         // Add more images as needed
       ],
     },
@@ -23,6 +27,7 @@ const PillarsScreen = ({ navigation }) => {
         require('../assets/Events/professionalism1.png'), 
         require('../assets/Events/professionalism2.png'),
         require('../assets/Events/professionalism3.png'), 
+        require('../assets/Events/professionalism4.png'),
         // Add more images as needed
       ],
     },
