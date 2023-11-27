@@ -14,16 +14,16 @@ const AboutPage = ({ navigation }) => {
       <View style={styles.container}>
         <Image source={require('../assets/R.png')} style={styles.topImage} />
 
-        <Text style={styles.title}>Theta Tau</Text>
-        <Text style={styles.chapter}>Mu Gamma Chapter</Text>
-        <Text style={styles.profession}>Professional Engineering Fraternity</Text>
-        <Text style={styles.verse}>
+        <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Theta Tau</Text>
+        <Text style={isDarkMode ? stylesDark.chapterDark : styles.chapter}>Mu Gamma Chapter</Text>
+        <Text  style={isDarkMode ? stylesDark.professionDark : styles.profession}>Professional Engineering Fraternity</Text>
+        <Text style={isDarkMode ? stylesDark.verseDark : styles.verse}>
           “Whatsoever thy hand findeth to do, do it with thy might;...”
           ~Ecclesiastes 9:10
-        </Text>
+        </Text> 
 
-        <View style={styles.textBoxContainer}>
-          <Text style={styles.textBoxText}>
+        <View style={isDarkMode ? stylesDark.textBoxContainerDark : styles.textBoxContainer}>
+          <Text style={isDarkMode ? stylesDark.textBoxTextDark : styles.textBoxText}>
             The purpose of Theta Tau is to develop and maintain a high standard of professional interest among its members, and to unite them in a strong bond of fraternal fellowship.
             {"\n\n"}
             Theta Tau, a co-ed professional engineering fraternity, emphasizes academic excellence, professional growth, and community service. Founded in 1904, it offers aspiring engineers a supportive network for personal and professional development. Activities include professional workshops, networking events, and community service projects, fostering leadership and lifelong friendships among members.
@@ -195,6 +195,43 @@ const stylesDark = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#333', // Dark background
+  },
+  titleDark: {
+    fontSize: 36,
+    color: '#ea190a',
+    textAlign: 'center',
+  },
+  chapterDark: {
+    fontSize: 18,
+    color: '#ea190a',
+    textAlign: 'center',
+  },
+  verseDark: {
+    fontSize: 16,
+    color: 'red',
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: '15%',
+  },
+  professionDark: {
+    fontSize: 18,
+    color: 'gold',
+    textAlign: 'center',
+  },
+  textBoxContainerDark: {
+    position: 'absolute', // Position the container absolutely
+    top: '38%', // Adjust this percentage to position the box right under the verse text
+    left: 10,
+    right: 10,
+    bottom: 0,
+    backgroundColor: '#0c0c0c', // Dark grey background
+    padding: 10,
+    borderRadius: 5,
+  },
+  textBoxTextDark: {
+    color: '#d8e2eb', // Dark red color
+    textAlign: 'center',
+    fontSize: 18, // Increased font size
   },
 });
 
