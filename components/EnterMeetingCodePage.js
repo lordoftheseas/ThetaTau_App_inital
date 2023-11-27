@@ -10,9 +10,7 @@ const EnterMeetingCodePage = ({ navigation }) => {
   const handleEnterMeetingCode = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:3001/verify-meeting-code', {
-        meetingCode,
-        // Add the user ID or any other identifier as meetingId
-        meetingId: user.id, // Replace 'user.id' with the actual user ID
+        meetingCode, // Only send the meetingCode
       });
   
       if (response.data.success) {
@@ -27,7 +25,7 @@ const EnterMeetingCodePage = ({ navigation }) => {
       setErrorMessage('Error connecting to the server. Please try again.');
     }
   };
-
+//comment
   return (
     <LinearGradient
       colors={['#ffffff', '#767676']} // Gradient colors
@@ -44,6 +42,16 @@ const EnterMeetingCodePage = ({ navigation }) => {
         <TouchableOpacity style={styles.button} onPress={handleEnterMeetingCode}>
           <Text style={styles.buttonText}>Enter</Text>
         </TouchableOpacity>
+{/* Home Button */}
+<TouchableOpacity
+  onPress={() => navigation.navigate('Home')}
+  style={styles.homeButton}
+>
+  <Image
+    source={require('../assets/homegear.png')}
+    style={styles.homeButtonImage}
+  />
+</TouchableOpacity>
 
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
       </View>
@@ -77,19 +85,35 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
+    backgroundColor: 'white', // Background color set to white
   },
   button: {
-    backgroundColor: 'blue',
+    marginTop: 20,
     padding: 10,
+    backgroundColor: '#ddd', // Change the background color to match your design
     borderRadius: 5,
   },
   buttonText: {
-    color: 'white',
+    color: 'black', // Change the text color to match your design
   },
   errorMessage: {
     color: 'red',
     marginTop: 10,
   },
+  homeButton: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 20,
+    width: 100, // Adjust the width as needed
+    height: 100, // Adjust the height as needed
+  },
+  homeButtonImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+  },
 });
+
+
 
 export default EnterMeetingCodePage;

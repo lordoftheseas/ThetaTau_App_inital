@@ -1,23 +1,26 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { DarkModeContext } from './DarkModeContext'; 
 
 const StartMeetingPage = ({ navigation, route }) => {
   const { meetingCode } = route.params;
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+  const dynamicStyles = isDarkMode ? stylesDark : styles; // Choose styles based on dark mode
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']} // Gradient colors
-      style={styles.linearGradient}
+      colors={isDarkMode ? ['#333' , '#000' ] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
     >
       <View style={styles.container}>
         <Image source={require('../assets/R.png')} style={styles.logo} />
-        <Text>Start Meeting Page</Text>
-        <Text>Meeting Code: {meetingCode}</Text>
-        
+        <Text style={isDarkMode ? stylesDark.textDark : styles.text}>Start Meeting Page</Text>
+        <Text style={isDarkMode ? stylesDark.textDark : styles.text}>Meeting Code: {meetingCode}</Text>
+
         {/* Button to navigate to CreatePoll.js */}
-        <TouchableOpacity onPress={() => navigation.navigate('CreatePoll')} style={styles.button}>
-          <Text>Create Poll</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('CreatePoll')} style={styles.createPollButton}>
+          <Text style={styles.createPollButtonText}>Create Poll</Text>
         </TouchableOpacity>
 
         {/* Home Button */}
@@ -42,16 +45,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 150, // Adjust as needed
-    height: 150, // Adjust as needed
+    width: 150, 
+    height: 150, 
     resizeMode: 'contain',
     marginBottom: 20,
   },
-  button: {
+  createPollButton: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#ddd',
+    backgroundColor: 'blue',
     borderRadius: 5,
+  },
+  createPollButtonText: {
+    color: 'white',
   },
   homeButton: {
     position: 'absolute',
@@ -63,6 +69,15 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: 'contain',
   },
+  text: {
+    color: "black"
+  }
+});
+
+const stylesDark = StyleSheet.create ({
+  textDark: {
+    color: "white"
+  }
 });
 
 export default StartMeetingPage;
