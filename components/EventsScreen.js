@@ -47,6 +47,8 @@ const EventsScreen = ({ navigation }) => {
         require('../assets/Events/biglil7.png'),
         require('../assets/Events/biglil8.png'),
         require('../assets/Events/biglil9.png'),
+        require('../assets/Events/biglil10.png'),
+        require('../assets/Events/biglil11.png'),
       ]
     }
     // Add more event data as needed

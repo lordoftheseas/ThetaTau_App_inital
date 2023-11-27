@@ -11,7 +11,7 @@ const PillarsScreen = ({ navigation }) => {
       title: 'Brotherhood',
       description: 'The brothers of Theta Tau Mu Gamma Chapter value strong bonds of friendship among its members...',
       images: [
-        require('../assets/biglil.jpg'), // change this to right pic
+        require('../assets/Events/professionalism1.png'), // change this to right pic
         require('../assets/biglil.jpg'), // change this to right pic
         // Add more images as needed
       ],
@@ -20,8 +20,9 @@ const PillarsScreen = ({ navigation }) => {
       title: 'Professionalism',
       description: 'The brothers of Theta Tau Mu Gamma Chapter participate in numerous professional development opportunities...',
       images: [
-        require('../assets/biglil.jpg'), // change this to right pic
-        require('../assets/biglil.jpg'), // change this to right pic 2
+        require('../assets/Events/professionalism1.png'), 
+        require('../assets/Events/professionalism2.png'),
+        require('../assets/Events/professionalism3.png'), 
         // Add more images as needed
       ],
     },
@@ -29,8 +30,9 @@ const PillarsScreen = ({ navigation }) => {
       title: 'Community Service',
       description: 'The brothers of Theta Tau Mu Gamma Chapter works hard to impact the world through acts of service...',
       images: [
-        require('../assets/biglil.jpg'), // change this to right pic
-        require('../assets/biglil.jpg'), // change this to right pic2
+        require('../assets/Events/service1.png'), 
+        require('../assets/Events/service2.png'), 
+        require('../assets/Events/service3.png'),
         // Add more images as needed
       ],
     },
