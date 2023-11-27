@@ -86,7 +86,7 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* E-Council Header */}
           <View style={styles.sectionHeader}>
-            <Text style={isDarkMode ? stylesDark.sectionHeaderTextDark : styles.sectionHeaderText}>E-Council</Text>
+            <Text style={isDarkMode ? stylesDark.sectionHeaderTextDark : styles.sectionHeaderText}>Executive Council</Text>
           </View>
 
           {BrotherData.brotherData.map((brother, index) => (
