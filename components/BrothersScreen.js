@@ -63,7 +63,7 @@ const BrothersScreen = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']}
+      colors={['#ffffff', '#ffffff']}
       style={styles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
@@ -75,7 +75,7 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* E-Council Header */}
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>E - Council</Text>
+            <Text style={styles.sectionHeaderText}>E-Council</Text>
           </View>
 
           {BrotherData.brotherData.map((brother, index) => (
@@ -93,6 +93,7 @@ const BrothersScreen = ({ navigation }) => {
                 <View style={styles.profileTextContainer}>
                   <Text style={styles.profileName}>{brother.name}</Text>
                   <Text style={styles.profileTitle}>{brother.title}</Text>
+                  <Text style={styles.className}>{brother.className}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -116,16 +117,39 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 70,
+    height: 70, // Adjust as needed
     resizeMode: 'contain',
   },
-  profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+  sectionHeader: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginTop: 18,
+    marginBottom: 10,
+    borderRadius: 10,
+    alignSelf: 'center',
   },
+  sectionHeaderText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  profileContainer: {
+    borderWidth: 1, // Set border width.
+    flexDirection: 'row', // Arrange children in a row.
+    borderColor: '#000', // Set border color.
+    padding: 10, // Set padding to create space around the content.
+    marginBottom: 10, // Set bottom margin to create space between the boxes.
+    borderRadius: 5, // Optional: if you want rounded corners.
+  },
+  // profileContainer: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingVertical: 10,
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: '#ccc',
+  //   paddingHorizontal: 10, // Add horizontal padding for profile items
+  // },
   profileImage: {
     width: 100,
     height: 100,
@@ -139,9 +163,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  profileTitle: {
+  profileRole: {
     fontSize: 14,
-    color: '#501315',
+    color: 'grey',
+  },
+  homeButton: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 20,
+  },
+  homeButtonImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
   },
   backButton: {
     position: 'absolute',
@@ -154,19 +188,7 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
   },
-  sectionHeader: {
-    backgroundColor: '#900807',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginTop: 18,
-    borderRadius: 10,
-    alignSelf: 'center',
-  },
-  sectionHeaderText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
 });
+
 
 export default BrothersScreen;
