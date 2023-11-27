@@ -3,6 +3,9 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { DarkModeContext } from './DarkModeContext'; 
 
+const lightModeIcon = require('../assets/x.png');
+const darkModeIcon = require('../assets/whitex.png');
+
 const AboutPage = ({ navigation }) => {
   const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
   const dynamicStyles = isDarkMode ? stylesDark : styles; 
@@ -69,12 +72,16 @@ const AboutPage = ({ navigation }) => {
         <TouchableOpacity >
           <Text style={styles.aboutButtonText}></Text>
         </TouchableOpacity>
+        
         {/* Back Button */}
         <TouchableOpacity 
-          style={styles.backButton} 
           onPress={() => navigation.goBack()} // Adjust the navigation as needed
+          style={stylesDark.backButtonDark} 
         >
-          <Image source={require('../assets/x.png')} style={styles.backButtonImage} />
+        <Image 
+            source={isDarkMode ? darkModeIcon : lightModeIcon} 
+            style={stylesDark.backButtonImageDark} 
+          />
         </TouchableOpacity>
       </View>
     </LinearGradient>
@@ -89,10 +96,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 120,
   },
   topImage: {
     width: '100%',
-    height: '8%',
+    height: '9%',
     resizeMode: 'contain',
   },
   title: {
@@ -232,6 +240,15 @@ const stylesDark = StyleSheet.create({
     color: '#d8e2eb', // Dark red color
     textAlign: 'center',
     fontSize: 18, // Increased font size
+  },
+  backButtonImageDark: {
+    width: 50,  // Adjust size as needed
+    height: 50, // Adjust size as needed
+  },
+  backButtonDark: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 20,
   },
 });
 
