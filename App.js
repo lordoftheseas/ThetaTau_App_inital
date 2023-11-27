@@ -11,6 +11,7 @@ import StartMeetingPage from './components/StartMeetingPage';
 import EnterMeetingCodePage from './components/EnterMeetingCodePage';
 import PollingPage from './components/PollingPage';
 import AboutPage from './components/AboutPage';
+import BrotherDetailScreen from './components/BrotherDetailScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,6 +41,8 @@ const App = () => {
         <Tab.Screen name="Events" component={EventsScreen} />
         <Tab.Screen name="Pillars" component={PillarsScreen} />
         <Tab.Screen name="About" component={AboutPage} />
+        <Tab.Screen name="BrotherDetail" component={BrotherDetailScreen} />
+
         {/* The AuthStack is now part of the Tab Navigator but with no visible tab due to tabBarButton */}
         <Tab.Screen
           name="Auth"
