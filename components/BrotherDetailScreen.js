@@ -17,14 +17,20 @@ const BrotherDetailScreen = ({ route, navigation }) => {
         <Image source={brother.imageSource} style={styles.image} />
         <Text style={styles.name}>{brother.name}</Text>
         <Text style={styles.title}>{brother.title}</Text>
-        <Text style={styles.description}>{brother.description}</Text>
+
+        <View style={styles.textBoxContainer}>
+          <Text style={styles.textBoxText}>{brother.description}
+          </Text>
+        </View>
+
+      
         
         {brother.linkedin && (
           <TouchableOpacity
             style={styles.linkedinButton}
             onPress={() => Linking.openURL(brother.linkedin)}
           >
-            <Text style={styles.linkedinButtonText}>View LinkedIn</Text>
+           <Image source={require('../assets/linkedin_logo.png')} style={styles.linkedinButtonImage} />
           </TouchableOpacity>
         )}
 
@@ -32,6 +38,7 @@ const BrotherDetailScreen = ({ route, navigation }) => {
        <TouchableOpacity onPress={() => navigation.navigate('Brothers')} style={styles.backButton}>
             <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
           </TouchableOpacity>
+
       </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -73,17 +80,6 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     marginBottom: 20,
   },
-  linkedinButton: {
-    backgroundColor: '#0077B5',
-    padding: 10,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  linkedinButtonText: {
-    color: 'white',
-    fontSize: 16,
-  },
   backButton: {
     position: 'absolute',
     top: 20,
@@ -94,6 +90,28 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     resizeMode: 'contain',
+  },
+  textBoxContainer: {
+    alignItems: 'center', // Position the container absolutely
+    top: 0, // Adjust this percentage to position the box right under the verse text
+    bottom: 10,
+    backgroundColor: '#828282', // Dark grey background
+    padding: 10,
+    borderRadius: 5,
+  },
+  textBoxText: {
+    color: 'black', // Dark'black color
+    textAlign: 'center',
+    fontSize: 18, // Increased font size
+  },
+  linkedinButton: {
+    alignSelf: 'center',
+    bottom: 20,
+  },
+  linkedinButtonImage: {
+    width: 75,  // Adjust size as needed
+    height: 75, // Adjust size as needed
+    marginTop: "20%",
   },
 });
 
