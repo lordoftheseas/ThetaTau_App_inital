@@ -8,35 +8,47 @@ const EventsScreen = ({ navigation }) => {
   // Sample data for event images and descriptions
   const eventData = [
     {
-      title: 'Big Little Dinner',
+      title: 'Field Day',
       images: [
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
+        require('../assets/Events/fieldday3.jpg'),
+        require('../assets/Events/fieldday2.jpg'),
+        require('../assets/Events/fieldday1.jpg'),
+      ]
+    },
+    {
+      title: "Founder's Day",
+      images: [
+        require('../assets/Events/foundersday1.jpg'),
+        require('../assets/Events/foundersday2.jpg'),
+        require('../assets/Events/foundersday3.jpg'),
+        require('../assets/Events/foundersday4.jpg'),
+      ]
+    },
+    {
+      title: 'Big Little Reveal',
+      images: [
+        require('../assets/Events/biglilreveal1.jpg'),
+        require('../assets/Events/biglilreveal2.jpg'),
+        require('../assets/Events/biglilreveal3.jpg'),
+        
         // Add more images as needed
       ]
     },
     {
-      title: 'Big Little Dinner',
+      title: "Big Little Dinner",
       images: [
         require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        // Add more images as needed
+        require('../assets/Events/biglil1.png'),
+        require('../assets/Events/biglil2.png'),
+        require('../assets/Events/biglil3.png'),
+        require('../assets/Events/biglil4.png'),
+        require('../assets/Events/biglil5.png'),
+        require('../assets/Events/biglil6.png'),
+        require('../assets/Events/biglil7.png'),
+        require('../assets/Events/biglil8.png'),
+        require('../assets/Events/biglil9.png'),
       ]
-    },
-    {
-      title: 'Big Little Dinner',
-      images: [
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        require('../assets/biglil.jpg'),
-        // Add more images as needed
-      ]
-    },
+    }
     // Add more event data as needed
   ];
 
