@@ -117,39 +117,17 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 70, // Adjust as needed
+    height: 70,
     resizeMode: 'contain',
-  },
-  sectionHeader: {
-    backgroundColor: '#900807',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginTop: 18,
-    marginBottom: 10,
-    borderRadius: 10,
-    alignSelf: 'center',
-  },
-  sectionHeaderText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
+    marginTop: 10,
   },
   profileContainer: {
-    borderWidth: 1, // Set border width.
-    flexDirection: 'row', // Arrange children in a row.
-    borderColor: '#000', // Set border color.
-    padding: 10, // Set padding to create space around the content.
-    marginBottom: 10, // Set bottom margin to create space between the boxes.
-    borderRadius: 5, // Optional: if you want rounded corners.
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
   },
-  // profileContainer: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   paddingVertical: 10,
-  //   borderBottomWidth: 1,
-  //   borderBottomColor: '#ccc',
-  //   paddingHorizontal: 10, // Add horizontal padding for profile items
-  // },
   profileImage: {
     width: 100,
     height: 100,
@@ -163,19 +141,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  profileRole: {
+  profileTitle: {
     fontSize: 14,
-    color: 'grey',
-  },
-  homeButton: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: 20,
-  },
-  homeButtonImage: {
-    width: 100,
-    height: 100,
-    resizeMode: 'contain',
+    color: '#501315',
   },
   backButton: {
     position: 'absolute',
@@ -188,6 +156,128 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
   },
+  sectionHeader: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginTop: 18,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  sectionHeaderText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  titleContainernada: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginTop: 10,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    height: 60,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 80,
+    left: 20,
+    zIndex: 10,
+  },
+  backButtonImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
+  titlenada: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+  },
+  // linearGradient: {
+  //   flex: 1,
+  // },
+  // safeArea: {
+  //   flex: 1,
+  // },
+  // scrollViewContent: {
+  //   flex: 1,
+  //   paddingHorizontal: 10,
+  // },
+  // topImage: {
+  //   width: '100%',
+  //   height: 70, // Adjust as needed
+  //   resizeMode: 'contain',
+  // },
+  // sectionHeader: {
+  //   backgroundColor: '#900807',
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 5,
+  //   marginTop: 18,
+  //   marginBottom: 10,
+  //   borderRadius: 10,
+  //   alignSelf: 'center',
+  // },
+  // sectionHeaderText: {
+  //   color: 'white',
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  // },
+  // profileContainer: {
+  //   borderWidth: 1, // Set border width.
+  //   flexDirection: 'row', // Arrange children in a row.
+  //   borderColor: '#000', // Set border color.
+  //   padding: 10, // Set padding to create space around the content.
+  //   marginBottom: 10, // Set bottom margin to create space between the boxes.
+  //   borderRadius: 5, // Optional: if you want rounded corners.
+  // },
+  // profileContainer: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   paddingVertical: 10,
+  //   borderBottomWidth: 1,
+  //   borderBottomColor: '#ccc',
+  //   paddingHorizontal: 10, // Add horizontal padding for profile items
+  // },
+  // profileImage: {
+  //   width: 100,
+  //   height: 100,
+  //   borderRadius: 50,
+  //   marginRight: 10,
+  // },
+  // profileTextContainer: {
+  //   justifyContent: 'center',
+  // },
+  // profileName: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  // },
+  // profileRole: {
+  //   fontSize: 14,
+  //   color: 'grey',
+  // },
+  // homeButton: {
+  //   position: 'absolute',
+  //   alignSelf: 'center',
+  //   bottom: 20,
+  // },
+  // homeButtonImage: {
+  //   width: 100,
+  //   height: 100,
+  //   resizeMode: 'contain',
+  // },
+  // backButton: {
+  //   position: 'absolute',
+  //   top: 20,
+  //   left: 20,
+  //   zIndex: 1,
+  // },
+  // backButtonImage: {
+  //   width: 40,
+  //   height: 40,
+  //   resizeMode: 'contain',
+  // },
 });
 
 
