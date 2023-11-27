@@ -5,7 +5,7 @@ import { DarkModeContext } from './DarkModeContext';
 
 // Import your dark mode and light mode toggle images
 const lightModeIcon = require('../assets/HomeScreen/light_mode_icon.png');
-const darkModeIcon = require('../assets/HomeScreen/dark_mode_icon.png'); // Replace with your dark mode icon path
+const darkModeIcon = require('../assets/HomeScreen/dark_mode_icon.png');
 
 // HomePage Component
 const HomePage = ({ navigation }) => {
