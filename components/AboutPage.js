@@ -73,8 +73,10 @@ const AboutPage = ({ navigation }) => {
           <Text style={styles.aboutButtonText}></Text>
         </TouchableOpacity>
         
-        {/* Back Button */}
-        <TouchableOpacity 
+        
+      </View>
+      {/* Back Button */}
+      <TouchableOpacity 
           onPress={() => navigation.goBack()} // Adjust the navigation as needed
           style={stylesDark.backButtonDark} 
         >
@@ -83,7 +85,6 @@ const AboutPage = ({ navigation }) => {
             style={stylesDark.backButtonImageDark} 
           />
         </TouchableOpacity>
-      </View>
     </LinearGradient>
   );
 };
