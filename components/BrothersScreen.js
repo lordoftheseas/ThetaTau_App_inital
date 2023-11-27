@@ -20,10 +20,17 @@ const getImageSource = (name) => {
   }
 };
 
-const BrothersScreen = ({ navigation }) => {
+// Your getImageSource function seems correct, ensure that you have a case for each brother's name
 
+const BrothersScreen = ({ navigation }) => {
   const onProfilePress = (brother) => {
-    navigation.navigate('BrotherDetail', { brother });
+    // Here you're creating a new object to pass to the BrotherDetail screen,
+    // which includes all the original brother data plus the imageSource.
+    const brotherWithImageSource = {
+      ...brother,
+      imageSource: getImageSource(brother.name),
+    };
+    navigation.navigate('BrotherDetail', { brother: brotherWithImageSource });
   };
 
   return (
