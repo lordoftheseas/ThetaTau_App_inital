@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { DarkModeContext } from './DarkModeContext'; 
 
 const AboutPage = ({ navigation }) => {
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+  const dynamicStyles = isDarkMode ? stylesDark : styles; 
   return (
-    <LinearGradient
-      colors={['#ffffff', '#767676']}
-      style={styles.linearGradient}
-    >
+      <LinearGradient
+        colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+        style={dynamicStyles.linearGradient}
+      >
       <View style={styles.container}>
         <Image source={require('../assets/R.png')} style={styles.topImage} />
 
@@ -181,6 +184,17 @@ const styles = StyleSheet.create({
   backButtonImage: {
     width: 50,  // Adjust size as needed
     height: 50, // Adjust size as needed
+  },
+});
+
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
   },
 });
 

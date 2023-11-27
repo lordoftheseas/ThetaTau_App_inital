@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Keyboard, Image, TouchableWithoutFeedback } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { DarkModeContext } from './DarkModeContext'; 
 
 const LoginScreen = () => {
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+  const dynamicStyles = isDarkMode ? stylesDark : styles; // Choose styles based on dark mode
+
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -65,10 +69,10 @@ const LoginScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
-      <LinearGradient
-        colors={['#ffffff', '#767676']} // Gradient colors
-        style={styles.linearGradient}
-      >
+    <LinearGradient
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
+    >
         <View style={styles.container}>
           <Image source={require('../assets/R.png')} style={styles.logo} />
 
@@ -150,6 +154,17 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     resizeMode: 'contain',
+  },
+});
+
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
   },
 });
 

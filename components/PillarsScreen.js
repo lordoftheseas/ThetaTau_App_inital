@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
+import { DarkModeContext } from './DarkModeContext';
 
 const PillarsScreen = ({ navigation }) => {
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+
+  const dynamicStyles = isDarkMode ? stylesDark : styles; // Choose styles based on dark mode
+
   // Sample data for pillar images and descriptions
   const pillarData = [
     {
@@ -45,7 +50,10 @@ const PillarsScreen = ({ navigation }) => {
   ];
 
   return (
-    <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
+    <LinearGradient
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
+    >
       <SafeAreaView style={styles.safeArea}>
         {/* Title and Back Button */}
         <View style={styles.titleContainer}>
@@ -176,6 +184,17 @@ const styles = StyleSheet.create({
   //   height: 100,
   //   resizeMode: 'contain',
   // },
+});
+
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
 });
 
 export default PillarsScreen;

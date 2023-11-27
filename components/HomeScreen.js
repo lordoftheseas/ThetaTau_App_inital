@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { DarkModeContext } from './DarkModeContext';
 
+// Import your dark mode and light mode toggle images
+const lightModeIcon = require('../assets/HomeScreen/light_mode_icon.png');
+const darkModeIcon = require('../assets/HomeScreen/dark_mode_icon.png'); // Replace with your dark mode icon path
+
 // HomePage Component
 const HomePage = ({ navigation }) => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
@@ -41,9 +45,10 @@ const HomePage = ({ navigation }) => {
             <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.brothers} />
             <Text style={styles.brothersLabels}>Brothers</Text>
           </TouchableOpacity>
+          
         </View>
 
-        <View style={{ flexDirection: 'row-reverse', flexWrap: 'wrap', justifyContent: 'space-around', marginBottom: '20%' }}>
+        <View style={{ flexDirection: 'row-reverse', flexWrap: 'wrap', justifyContent: 'space-around', marginBottom: '10%' }}>
           <TouchableOpacity onPress={() => navigation.navigate('Pillars')}>
             <Image source={require('../assets/HomeScreen/pillars.png')} style={styles.buttonImage} />
             <Text style={styles.buttonLabels}>Pillars</Text>
@@ -59,6 +64,10 @@ const HomePage = ({ navigation }) => {
 
           {/* Dark Mode Toggle Button */}
           <TouchableOpacity onPress={toggleDarkMode} style={styles.darkModeButton}>
+          <Image 
+            source={isDarkMode ? darkModeIcon : lightModeIcon} 
+            style={styles.darkModeButtonImage} 
+            />
           <Text style={styles.darkModeButtonText}>
             {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </Text>
@@ -152,6 +161,16 @@ const styles = StyleSheet.create({
     height: 100,
     resizeMode: 'contain',
   },
+  darkModeButton: {
+    padding: 10,
+    alignContent: "center"
+  },
+  darkModeButtonImage: {
+    width:75,
+    height:75,
+    marginLeft:30,
+  
+  },
 });
 
 const stylesDark = StyleSheet.create({
@@ -169,6 +188,6 @@ const stylesDark = StyleSheet.create({
     color: '#fff', // Text color for better visibility in dark mode
     textAlign: 'center',
   },
-  // ... other dark mode styles ...
+
 });
 export default HomePage;

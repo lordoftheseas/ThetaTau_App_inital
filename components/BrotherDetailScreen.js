@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { DarkModeContext } from './DarkModeContext'; 
 
 const BrotherDetailScreen = ({ route, navigation }) => {
   const { brother } = route.params;
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+
+  const dynamicStyles = isDarkMode ? stylesDark : styles; // Choose styles based on dark mode
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']}
-      style={styles.linearGradient}
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
@@ -112,6 +115,17 @@ const styles = StyleSheet.create({
     width: 75,  // Adjust size as needed
     height: 75, // Adjust size as needed
     marginTop: "20%",
+  },
+});
+
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
   },
 });
 

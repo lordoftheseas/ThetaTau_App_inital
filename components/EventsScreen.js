@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
+import { DarkModeContext } from './DarkModeContext';
 
 const EventsScreen = ({ navigation }) => {
   // Sample data for event images and descriptions
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+
+  const dynamicStyles = isDarkMode ? stylesDark : styles;
+
   const eventData = [
     {
       title: 'Field Day',
@@ -55,7 +60,10 @@ const EventsScreen = ({ navigation }) => {
   ];
 
   return (
-    <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
+    <LinearGradient
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
+    >
       <SafeAreaView style={styles.safeArea}>
         {/* Title and Back Button */}
         <View style={styles.titleContainernada}>
@@ -176,6 +184,18 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
   },
+});
+
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+
 });
 
 export default EventsScreen;
