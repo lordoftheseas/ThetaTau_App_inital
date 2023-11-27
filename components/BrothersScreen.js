@@ -240,7 +240,7 @@ const stylesDark = StyleSheet.create({
   },
   profileTitleDark: {
     fontSize: 14,
-    color: '#ffa700',
+    color: '#ffa700', //gold
   },
 });
 
