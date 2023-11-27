@@ -57,15 +57,15 @@ const EventsScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={['#ffffff', '#767676']} style={styles.linearGradient}>
       <SafeAreaView style={styles.safeArea}>
+        {/* Title and Back Button */}
+        <View style={styles.titleContainernada}>
+          <Text style={styles.titlenada}>Events</Text>
+        </View>
+        {/* Back Button */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+        </TouchableOpacity>
         <ScrollView style={styles.scrollViewContent}>
-          {/* Event Header */}
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Events</Text>
-          </View>
-          {/* Back Button */}
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
-          </TouchableOpacity>
           {/* Description Section */}
           {eventData.map((event, index) => (
             <View key={index}>
@@ -150,11 +150,26 @@ const styles = StyleSheet.create({
   swiperContainer: {
     height: 300,
   },
+  titleContainernada: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginTop: 10,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    height: 60,
+  },
+  titlenada: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
+  },
   backButton: {
     position: 'absolute',
-    top: 20,
+    top: 80,
     left: 20,
-    zIndex: 1,
+    zIndex: 10,
   },
   backButtonImage: {
     width: 40,
