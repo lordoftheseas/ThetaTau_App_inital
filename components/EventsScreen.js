@@ -67,7 +67,7 @@ const EventsScreen = ({ navigation }) => {
       <SafeAreaView style={styles.safeArea}>
         {/* Title and Back Button */}
         <View style={styles.titleContainernada}>
-          <Text style={styles.titlenada}>Events</Text>
+          <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Events</Text>
         </View>
         {/* Back Button */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -78,7 +78,7 @@ const EventsScreen = ({ navigation }) => {
           {eventData.map((event, index) => (
             <View key={index}>
               {/* Event Swiper */}
-              <Text style={styles.eventTitle}>{event.title}</Text>
+              <Text style={isDarkMode ? stylesDark.eventTitleDark : styles.eventTitle}>{event.title}</Text>
               <Swiper style={styles.swiperContainer} showsButtons={false}>
                 {event.images.map((image, imageIndex) => (
                   <View key={imageIndex} style={styles.eventItem}>
@@ -194,6 +194,20 @@ const stylesDark = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#333', // Dark background
+  },
+  titleDark: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'gold',
+    textAlign: 'center',
+  },
+  eventTitleDark: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#d8e2eb',
+    textAlign: 'center',
+    marginBottom: -10,
+    marginTop: 20,
   },
 
 });
