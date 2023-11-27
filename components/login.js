@@ -80,11 +80,13 @@ const LoginScreen = () => {
           <TextInput
             style={isDarkMode ? stylesDark.inputDark : styles.input}
             placeholder="Username"
+            placeholderTextColor={isDarkMode ? 'white' : 'gray'}
             onChangeText={(text) => setUsername(text.toLowerCase())}
           />
           <TextInput
             style={isDarkMode ? stylesDark.inputDark : styles.input}
             placeholder="Password"
+            placeholderTextColor={isDarkMode ? 'white' : 'gray'}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text.toLowerCase())}
           />
@@ -181,6 +183,7 @@ const stylesDark = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
+    color: "white"
   },
 });
 
