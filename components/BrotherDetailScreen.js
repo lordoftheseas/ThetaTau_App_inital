@@ -7,7 +7,7 @@ const BrotherDetailScreen = ({ route, navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#ffffff']}
+      colors={['#ffffff', '#767676']}
       style={styles.linearGradient}
     >
       <ScrollView style={styles.container}>
