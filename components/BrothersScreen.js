@@ -75,7 +75,7 @@ const BrothersScreen = ({ navigation }) => {
       <SafeAreaView style={styles.safeArea}>
         {/* Title and Back Button */}
         <View style={styles.titleContainernada}>
-          <Text style={styles.titlenada}>Brothers</Text>
+          <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Brothers</Text>
         </View>
         {/* Back Button */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -86,14 +86,14 @@ const BrothersScreen = ({ navigation }) => {
 
           {/* E-Council Header */}
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>E-Council</Text>
+            <Text style={isDarkMode ? stylesDark.sectionHeaderTextDark : styles.sectionHeader}>E-Council</Text>
           </View>
 
           {BrotherData.brotherData.map((brother, index) => (
             <View key={index}>
               {index === 6 && (
                 <View style={styles.sectionHeader}>
-                  <Text style={styles.sectionHeaderText}>Brothers</Text>
+                  <Text style={isDarkMode ? stylesDark.sectionHeaderTextDark : styles.sectionHeaderText}>Brothers</Text>
                 </View>
               )}
               <TouchableOpacity
@@ -102,8 +102,8 @@ const BrothersScreen = ({ navigation }) => {
               >
                 <Image source={getImageSource(brother.name)} style={styles.profileImage} />
                 <View style={styles.profileTextContainer}>
-                  <Text style={styles.profileName}>{brother.name}</Text>
-                  <Text style={styles.profileTitle}>{brother.title}</Text>
+                  <Text style={isDarkMode ? stylesDark.profileNameDark : styles.profileName}>{brother.name}</Text>
+                  <Text style={isDarkMode ? stylesDark.profileTitleDark : styles.profileTitle}>{brother.title}</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
   },
-  titlenada: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
@@ -222,7 +222,26 @@ const stylesDark = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: '#333', // Dark background for the scroll view
   },
-  // ... rest of your dark mode styles ...
+  titleDark: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'gold',
+    textAlign: 'center',
+  },
+  sectionHeaderTextDark: {
+    color: 'gold',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  profileNameDark: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: "#900807"
+  },
+  profileTitleDark: {
+    fontSize: 14,
+    color: 'gold',
+  },
 });
 
 export default BrothersScreen;

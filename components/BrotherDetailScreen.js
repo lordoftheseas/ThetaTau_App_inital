@@ -18,12 +18,12 @@ const BrotherDetailScreen = ({ route, navigation }) => {
       <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <Image source={brother.imageSource} style={styles.image} />
-        <Text style={styles.name}>{brother.name}</Text>
-        <Text style={styles.title}>{brother.title}</Text>
+        <Text style={isDarkMode ? stylesDark.nameDark : styles.name}>{brother.name}</Text>
+        <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>{brother.title}</Text>
 
-        <View style={styles.textBoxContainer}>
-          <Text style={styles.textBoxText}>{brother.description}
-          </Text>
+        <View style={isDarkMode ? stylesDark.textBoxContainerDark : styles.textBoxContainer}>
+          <Text style={isDarkMode ? stylesDark.textBoxTextDark : styles.textBoxText}>{brother.description}
+            </Text>
         </View>
 
       
@@ -126,6 +126,33 @@ const stylesDark = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#333', // Dark background
+  },
+  textBoxContainerDark: {
+    alignItems: 'center', // Position the container absolutely
+    top: 0, // Adjust this percentage to position the box right under the verse text
+    bottom: 10,
+    backgroundColor: '#0c0c0c', // Dark grey background
+    padding: 10,
+    borderRadius: 5,
+  },
+
+  textBoxTextDark: {
+    color: '#d8e2eb', // Dark red color
+    textAlign: 'center',
+    fontSize: 18, // Increased font size
+  },
+  nameDark: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 10,
+    color: "#900807"
+  },
+  titleDark: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 10,
+    color: 'gold',
   },
 });
 
