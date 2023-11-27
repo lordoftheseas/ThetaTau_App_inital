@@ -33,6 +33,10 @@ const BrothersScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
+        {/* Back Button */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+        </TouchableOpacity>
           <Image source={require('../assets/R.png')} style={styles.topImage} />
 
           {BrotherData.brotherData.map((brother, index) => (
@@ -93,6 +97,17 @@ const styles = StyleSheet.create({
   profileTitle: {
     fontSize: 14,
     color: 'grey',
+  },
+  backButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
+  },
+  backButtonImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
   },
 });
 

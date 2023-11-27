@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 const BrotherDetailScreen = ({ route, navigation }) => {
   const { brother } = route.params;
@@ -10,6 +12,7 @@ const BrotherDetailScreen = ({ route, navigation }) => {
       colors={['#ffffff', '#767676']}
       style={styles.linearGradient}
     >
+      <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <Image source={brother.imageSource} style={styles.image} />
         <Text style={styles.name}>{brother.name}</Text>
@@ -30,6 +33,7 @@ const BrotherDetailScreen = ({ route, navigation }) => {
             <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
           </TouchableOpacity>
       </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -40,6 +44,9 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 20,
+  },
+  safeArea: {
+    flex: 1,
   },
   image: {
     width: 150,
