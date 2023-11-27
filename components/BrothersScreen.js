@@ -225,11 +225,11 @@ const stylesDark = StyleSheet.create({
   titleDark: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'gold',
+    color: '#ffa700',
     textAlign: 'center',
   },
   sectionHeaderTextDark: {
-    color: 'gold',
+    color: '#ffa700',
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -240,7 +240,7 @@ const stylesDark = StyleSheet.create({
   },
   profileTitleDark: {
     fontSize: 14,
-    color: 'gold',
+    color: '#ffa700',
   },
 });
 

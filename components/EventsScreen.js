@@ -198,7 +198,7 @@ const stylesDark = StyleSheet.create({
   titleDark: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'gold',
+    color: '#ffa700',
     textAlign: 'center',
   },
   eventTitleDark: {

@@ -57,7 +57,7 @@ const PillarsScreen = ({ navigation }) => {
       <SafeAreaView style={styles.safeArea}>
         {/* Title and Back Button */}
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Pillars</Text>
+        <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Pillars</Text>
         </View>
         {/* Back Button */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -67,8 +67,8 @@ const PillarsScreen = ({ navigation }) => {
         <ScrollView style={styles.scrollViewContent}>
           {pillarData.map((pillar, index) => (
             <View key={index} style={styles.pillarContainer}>
-              <View style={styles.pillarTitleContainer}>
-                <Text style={styles.pillarTitle}>{pillar.title}</Text>
+              <View style={isDarkMode ? stylesDark.pillarTitleContainerDark : styles.pillarTitleContainer}>
+              <Text style={isDarkMode ? stylesDark.pillarTitalDark : styles.pillarTitle}>{pillar.title}</Text>
               </View>
               <Swiper style={styles.swiperContainer} showsButtons={false}>
                 {pillar.images.map((image, imageIndex) => (
@@ -174,16 +174,7 @@ const styles = StyleSheet.create({
     height: 40,
     resizeMode: 'contain',
   },
-  // homeButton: {
-  //   position: 'absolute',
-  //   alignSelf: 'center',
-  //   bottom: 20,
-  // },
-  // homeButtonImage: {
-  //   width: 100,
-  //   height: 100,
-  //   resizeMode: 'contain',
-  // },
+
 });
 
 const stylesDark = StyleSheet.create({
@@ -194,6 +185,24 @@ const stylesDark = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#333', // Dark background
+  },
+  titleDark: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ffa700',
+    textAlign: 'center',
+  },
+  pillarTitalDark: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#ffa700',
+    textAlign: 'center',
+  },
+  pillarTitleContainerDark: {
+    backgroundColor: '#0c0c0c',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
   },
 });
 

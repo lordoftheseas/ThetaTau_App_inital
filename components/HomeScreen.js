@@ -192,7 +192,7 @@ const stylesDark = StyleSheet.create({
     borderRadius: 5,
   },
   aboutButtonTextDark: {
-    color: 'gold', // White text color for contrast
+    color: '#ffa700', // White text color for contrast
     textAlign: 'center',
     fontSize: 16, // Adjust as needed
   },
@@ -209,17 +209,17 @@ const stylesDark = StyleSheet.create({
   },
   professionDark: {
     fontSize: 18,
-    color: 'gold',
+    color: '#ffa700',
     textAlign: 'center',
   },
   buttonLabelsDark: {
     textAlign: 'center',
-    color: 'gold'
+    color: '#ffa700'
   },
   brothersLabelsDark: {
     textAlign: 'center',
     marginTop: 5,
-    color: 'gold'
+    color: '#ffa700'
   },
 });
 export default HomePage;

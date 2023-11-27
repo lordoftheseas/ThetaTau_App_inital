@@ -152,7 +152,7 @@ const stylesDark = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 10,
-    color: 'gold',
+    color: '#ffa700',
   },
 });
 
