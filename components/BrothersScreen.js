@@ -20,12 +20,8 @@ const getImageSource = (name) => {
   }
 };
 
-// Your getImageSource function seems correct, ensure that you have a case for each brother's name
-
 const BrothersScreen = ({ navigation }) => {
   const onProfilePress = (brother) => {
-    // Here you're creating a new object to pass to the BrotherDetail screen,
-    // which includes all the original brother data plus the imageSource.
     const brotherWithImageSource = {
       ...brother,
       imageSource: getImageSource(brother.name),
@@ -40,24 +36,34 @@ const BrothersScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
-        {/* Back Button */}
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
-        </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+          </TouchableOpacity>
           <Image source={require('../assets/R.png')} style={styles.topImage} />
 
+          {/* E-Council Header */}
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>E - Council</Text>
+          </View>
+
           {BrotherData.brotherData.map((brother, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.profileContainer}
-              onPress={() => onProfilePress(brother)}
-            >
-              <Image source={getImageSource(brother.name)} style={styles.profileImage} />
-              <View style={styles.profileTextContainer}>
-                <Text style={styles.profileName}>{brother.name}</Text>
-                <Text style={styles.profileTitle}>{brother.title}</Text>
-              </View>
-            </TouchableOpacity>
+            <View key={index}>
+              {index === 6 && (
+                <View style={styles.sectionHeader}>
+                  <Text style={styles.sectionHeaderText}>Brothers</Text>
+                </View>
+              )}
+              <TouchableOpacity
+                style={styles.profileContainer}
+                onPress={() => onProfilePress(brother)}
+              >
+                <Image source={getImageSource(brother.name)} style={styles.profileImage} />
+                <View style={styles.profileTextContainer}>
+                  <Text style={styles.profileName}>{brother.name}</Text>
+                  <Text style={styles.profileTitle}>{brother.title}</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           ))}
         </ScrollView>
       </SafeAreaView>
@@ -103,7 +109,7 @@ const styles = StyleSheet.create({
   },
   profileTitle: {
     fontSize: 14,
-    color: 'grey',
+    color: '#501315',
   },
   backButton: {
     position: 'absolute',
@@ -115,6 +121,19 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     resizeMode: 'contain',
+  },
+  sectionHeader: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginTop: 18,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  sectionHeaderText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
