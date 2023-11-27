@@ -73,15 +73,20 @@ const BrothersScreen = ({ navigation }) => {
       style={dynamicStyles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
+        {/* Title and Back Button */}
+        <View style={styles.titleContainernada}>
+          <Text style={styles.titlenada}>Brothers</Text>
+        </View>
+        {/* Back Button */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
+        </TouchableOpacity>
         <ScrollView style={styles.scrollViewContent}>
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-            <Image source={require('../assets/back.png')} style={styles.backButtonImage} />
-          </TouchableOpacity>
           <Image source={require('../assets/R.png')} style={styles.topImage} />
 
           {/* E-Council Header */}
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>E - Council</Text>
+            <Text style={styles.sectionHeaderText}>E-Council</Text>
           </View>
 
           {BrotherData.brotherData.map((brother, index) => (
@@ -124,6 +129,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 70,
     resizeMode: 'contain',
+    marginTop: 10,
   },
   profileContainer: {
     flexDirection: 'row',
@@ -172,6 +178,32 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  titleContainernada: {
+    backgroundColor: '#900807',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    marginTop: 10,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    height: 60,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 80,
+    left: 20,
+    zIndex: 10,
+  },
+  backButtonImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
+  },
+  titlenada: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
   },
 })
 
