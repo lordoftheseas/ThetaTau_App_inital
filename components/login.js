@@ -76,20 +76,20 @@ const LoginScreen = () => {
         <View style={styles.container}>
           <Image source={require('../assets/R.png')} style={styles.logo} />
 
-          <Text style={styles.title}>Login</Text>
+          <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Login</Text>
           <TextInput
-            style={styles.input}
+            style={isDarkMode ? stylesDark.inputDark : styles.input}
             placeholder="Username"
             onChangeText={(text) => setUsername(text.toLowerCase())}
           />
           <TextInput
-            style={styles.input}
+            style={isDarkMode ? stylesDark.inputDark : styles.input}
             placeholder="Password"
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text.toLowerCase())}
           />
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
+          <Text style={isDarkMode ? stylesDark.buttonTextDark : styles.buttonText}>Login</Text>
           </TouchableOpacity>
 
           {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
@@ -165,6 +165,22 @@ const stylesDark = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#333', // Dark background
+  },
+  titleDark: {
+    fontSize: 24,
+    marginBottom: 16,
+    color: "white"
+  },
+  buttonTextDark: {
+    color: '#ffa700',
+  },
+  inputDark: {
+    height: 40,
+    width: 200,
+    borderColor: 'white',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingLeft: 10,
   },
 });
 
