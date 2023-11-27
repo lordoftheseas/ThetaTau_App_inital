@@ -83,6 +83,59 @@ app.post('/verify-meeting-code', async (req, res) => {
   }
 });
 
+// Endpoint to create a poll
+app.post('/create-poll', async (req, res) => {
+  const { question, answers } = req.body;
+  try {
+    // Insert the poll question
+    const [pollResult] = await db.query('INSERT INTO polls (question) VALUES (?)', [question]);
+    const pollId = pollResult.insertId;
+
+    // Insert the poll options
+    await Promise.all(answers.map(answer => {
+      return db.query('INSERT INTO poll_options (poll_id, option_text) VALUES (?, ?)', [pollId, answer]);
+    }));
+
+    res.json({ success: true, pollId: pollId });
+  } catch (error) {
+    console.error('Error creating poll:', error);
+    res.status(500).json({ success: false, message: 'Error creating poll' });
+  }
+});
+
+// Endpoint to record a vote
+app.post('/vote', async (req, res) => {
+  const { pollOptionId } = req.body;
+  try {
+    await db.query('INSERT INTO votes (poll_option_id) VALUES (?)', [pollOptionId]);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error recording vote:', error);
+    res.status(500).json({ success: false, message: 'Error recording vote' });
+  }
+});
+
+// Endpoint to get poll results
+app.get('/poll-results/:pollId', async (req, res) => {
+  const { pollId } = req.params;
+  try {
+    const [options] = await db.query(`
+      SELECT po.option_text, COUNT(v.id) as voteCount
+      FROM poll_options po
+      LEFT JOIN votes v ON po.id = v.poll_option_id
+      WHERE po.poll_id = ?
+      GROUP BY po.id
+    `, [pollId]);
+
+    res.json({ success: true, results: options });
+  } catch (error) {
+    console.error('Error fetching poll results:', error);
+    res.status(500).json({ success: false, message: 'Error fetching poll results' });
+  }
+});
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

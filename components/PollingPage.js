@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const PollingPage = ({ route }) => {
-  const { question = '', answerOne = '', answerTwo = '' } = route.params || {};
+const PollingPage = ({ route, navigation }) => {
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const { pollId } = route.params || {};
 
-  const handleVote = (answer) => {
-    // Logic to handle the vote
-    console.log(`Voted for: ${answer}`);
+  if (!pollId) {
+    // Return a different UI or handle the absence of pollId appropriately
+    return <View style={styles.container}><Text>No Poll ID provided</Text></View>;
+  }
+  const handleSelectAnswer = async (answerId) => {
+    setSelectedAnswer(answerId);
+    try {
+      const response = await fetch('http://127.0.0.1:3001/vote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ optionId: answerId, pollId: pollId }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to record vote');
+      }
+
+      // Handle response, e.g., navigate to a results page if you have one
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  if (!question || !answerOne || !answerTwo) {
-    return (
-      <View style={styles.container}>
-        <Text>No poll data available.</Text>
-      </View>
-    );
-  }
+  const getButtonStyle = (answer) => {
+    return answer === selectedAnswer ? styles.selectedButton : styles.button;
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.question}>{question}</Text>
-      <TouchableOpacity style={styles.button} onPress={() => handleVote(answerOne)}>
-        <Text style={styles.buttonText}>{answerOne}</Text>
+      {/* Replace this part with your logic to display the question and answers */}
+      <Text style={styles.question}>Poll Question</Text>
+      <TouchableOpacity style={getButtonStyle('answerOne')} onPress={() => handleSelectAnswer('answerOneId')}>
+        <Text style={styles.buttonText}>Answer One</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => handleVote(answerTwo)}>
-        <Text style={styles.buttonText}>{answerTwo}</Text>
+      <TouchableOpacity style={getButtonStyle('answerTwo')} onPress={() => handleSelectAnswer('answerTwoId')}>
+        <Text style={styles.buttonText}>Answer Two</Text>
       </TouchableOpacity>
     </View>
   );
@@ -38,7 +56,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   question: {
-    fontSize: 20,
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
   button: {
@@ -46,6 +65,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
+    minWidth: 100,
+    alignItems: 'center',
+  },
+  selectedButton: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+    minWidth: 100,
+    alignItems: 'center',
   },
   buttonText: {
     color: 'white',
