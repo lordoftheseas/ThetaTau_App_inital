@@ -16,7 +16,7 @@ const HomePage = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      colors={isDarkMode ? ['#333' , '#000' ] : ['#ffffff', '#767676']}
       style={[styles.linearGradient, darkStyles.linearGradient]}
     >
       <View style={styles.container}>
@@ -26,8 +26,8 @@ const HomePage = ({ navigation }) => {
         {/* Text Section */}
         <Text style={styles.title}>Theta Tau</Text>
         <Text style={styles.chapter}>Mu Gamma Chapter</Text>
-        <Text style={styles.profession}>Professional Engineering Fraternity</Text>
-        <Text style={styles.verse}>
+        <Text  style={isDarkMode ? stylesDark.professionDark : styles.profession}>Professional Engineering Fraternity</Text>
+        <Text style={isDarkMode ? stylesDark.verseDark : styles.verse}>
           “Whatsoever thy hand findeth to do, do it with thy might;...”
           ~Ecclesiastes 9:10
         </Text> 
@@ -36,46 +36,49 @@ const HomePage = ({ navigation }) => {
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', marginBottom: '10%' }}>
           <TouchableOpacity onPress={() => navigation.navigate('Events')}>
             <Image source={require('../assets/HomeScreen/events.png')} style={styles.buttonImage} />
-            <Text style={styles.buttonLabels}>Events</Text>
+            <Text style={isDarkMode ? stylesDark.buttonLabelsDark : styles.buttonLabels}>Events</Text>
           </TouchableOpacity>
 
           <View style={{ width: 50 }} />
 
           <TouchableOpacity onPress={() => navigation.navigate('Brothers')}>
             <Image source={require('../assets/HomeScreen/brothers.png')} style={styles.brothers} />
-            <Text style={styles.brothersLabels}>Brothers</Text>
+            <Text style={isDarkMode ? stylesDark.brothersLabelsDark : styles.brothersLabels}>Brothers</Text>
           </TouchableOpacity>
           
         </View>
 
-        <View style={{ flexDirection: 'row-reverse', flexWrap: 'wrap', justifyContent: 'space-around', marginBottom: '10%' }}>
+        <View style={{ flexDirection: 'row-reverse', flexWrap: 'wrap', justifyContent: 'space-around', marginBottom: '20%' }}>
           <TouchableOpacity onPress={() => navigation.navigate('Pillars')}>
             <Image source={require('../assets/HomeScreen/pillars.png')} style={styles.buttonImage} />
-            <Text style={styles.buttonLabels}>Pillars</Text>
+            <Text style={isDarkMode ? stylesDark.buttonLabelsDark : styles.buttonLabels}>Pillars</Text>
           </TouchableOpacity>
 
           <View style={{ width: 50 }} />
 
           <TouchableOpacity onPress={() => navigation.navigate('Auth')}>
             <Image source={require('../assets/HomeScreen/meeting.png')} style={styles.buttonImage} />
-            <Text style={styles.buttonLabels}>Meeting</Text>
+            <Text style={isDarkMode ? stylesDark.buttonLabelsDark : styles.buttonLabels}>Meeting</Text>
           </TouchableOpacity>
         </View>
 
-          {/* Dark Mode Toggle Button */}
-          <TouchableOpacity onPress={toggleDarkMode} style={styles.darkModeButton}>
+        <View style={styles.aboutButtonContainer}>
+          <TouchableOpacity 
+            onPress={() => navigation.navigate('About')} 
+            style={isDarkMode ? styles.aboutButtonDark : styles.aboutButton}
+          >
+          <Text style={isDarkMode ? stylesDark.aboutButtonTextDark : styles.aboutButtonText}>
+            About Theta Tau
+          </Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Dark Mode Toggle Button */}
+        <TouchableOpacity onPress={toggleDarkMode} style={styles.darkModeButton}>
           <Image 
             source={isDarkMode ? darkModeIcon : lightModeIcon} 
             style={styles.darkModeButtonImage} 
             />
-          <Text style={styles.darkModeButtonText}>
-            {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-          </Text>
-        </TouchableOpacity>
-
-        {/* About Theta Tau Button */}
-        <TouchableOpacity onPress={() => navigation.navigate('About')} style={styles.aboutButtonContainer}>
-          <Text style={styles.aboutButtonText}>About Theta Tau</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
@@ -166,10 +169,8 @@ const styles = StyleSheet.create({
     alignContent: "center"
   },
   darkModeButtonImage: {
-    width:75,
-    height:75,
-    marginLeft:30,
-  
+    width:50,
+    height:50,
   },
 });
 
@@ -184,10 +185,35 @@ const stylesDark = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
-  darkModeButtonText: {
-    color: '#fff', // Text color for better visibility in dark mode
+  aboutButtonTextDark: {
+    color: 'gold', // White text color for contrast
+    textAlign: 'center',
+    fontSize: 16, // Adjust as needed
+  },
+  aboutButtonDark: {
+    backgroundColor: '#555', // Dark mode background color
+    // ...other styling for the button in dark mode...
+  },
+  verseDark: {
+    fontSize: 16,
+    color: 'red',
+    textAlign: 'center',
+    fontStyle: 'italic',
+    marginBottom: '15%',
+  },
+  professionDark: {
+    fontSize: 18,
+    color: 'gold',
     textAlign: 'center',
   },
-
+  buttonLabelsDark: {
+    textAlign: 'center',
+    color: 'gold'
+  },
+  brothersLabelsDark: {
+    textAlign: 'center',
+    marginTop: 5,
+    color: 'gold'
+  },
 });
 export default HomePage;

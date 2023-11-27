@@ -70,7 +70,7 @@ const LoginScreen = () => {
   return (
     <TouchableWithoutFeedback onPress={handleContainerPress}>
     <LinearGradient
-      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      colors={isDarkMode ? ['#333' , '#000' ] : ['#ffffff', '#767676']}
       style={dynamicStyles.linearGradient}
     >
         <View style={styles.container}>

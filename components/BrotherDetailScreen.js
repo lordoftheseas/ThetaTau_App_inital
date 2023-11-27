@@ -12,7 +12,7 @@ const BrotherDetailScreen = ({ route, navigation }) => {
 
   return (
     <LinearGradient
-      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+    colors={isDarkMode ? ['#333' , '#000' ] : ['#ffffff', '#767676']}
       style={dynamicStyles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
