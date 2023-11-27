@@ -24,8 +24,8 @@ const HomePage = ({ navigation }) => {
         <Image source={require('../assets/R.png')} style={styles.topImage} />
 
         {/* Text Section */}
-        <Text style={styles.title}>Theta Tau</Text>
-        <Text style={styles.chapter}>Mu Gamma Chapter</Text>
+        <Text style={isDarkMode ? stylesDark.titleDark : styles.title}>Theta Tau</Text>
+        <Text style={isDarkMode ? stylesDark.chapterDark : styles.chapter}>Mu Gamma Chapter</Text>
         <Text  style={isDarkMode ? stylesDark.professionDark : styles.profession}>Professional Engineering Fraternity</Text>
         <Text style={isDarkMode ? stylesDark.verseDark : styles.verse}>
           “Whatsoever thy hand findeth to do, do it with thy might;...”
@@ -175,10 +175,16 @@ const styles = StyleSheet.create({
 });
 
 const stylesDark = StyleSheet.create({
-  linearGradient: {
-    // Define your dark mode specific styles here
+  titleDark: {
+    fontSize: 36,
+    color: '#ea190a',
+    textAlign: 'center',
   },
-  // Add dark mode styles for other components if needed
+  chapterDark: {
+    fontSize: 18,
+    color: '#ea190a',
+    textAlign: 'center',
+  },
   darkModeButton: {
     marginTop: 20,
     backgroundColor: '#555', // Darker background for the button in dark mode
