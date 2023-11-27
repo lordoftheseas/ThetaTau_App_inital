@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,8 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BrotherData from '../data/brotherData.json';
+import { DarkModeContext } from './DarkModeContext'; 
+
 
 const getImageSource = (name) => {
   switch(name) {
@@ -53,6 +55,10 @@ const getImageSource = (name) => {
 };
 
 const BrothersScreen = ({ navigation }) => {
+  const { isDarkMode } = useContext(DarkModeContext); // Use the dark mode state
+
+  const dynamicStyles = isDarkMode ? stylesDark : styles; // Choose styles based on dark mode
+
   const onProfilePress = (brother) => {
     const brotherWithImageSource = {
       ...brother,
@@ -63,8 +69,8 @@ const BrothersScreen = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']}
-      style={styles.linearGradient}
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={dynamicStyles.linearGradient}
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scrollViewContent}>
@@ -167,6 +173,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+})
+
+// Dark mode styles
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#333', // Dark background
+  },
+  scrollViewContent: {
+    flex: 1,
+    paddingHorizontal: 10,
+    backgroundColor: '#333', // Dark background for the scroll view
+  },
+  // ... rest of your dark mode styles ...
 });
 
 export default BrothersScreen;

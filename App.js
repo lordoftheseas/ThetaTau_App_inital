@@ -12,6 +12,7 @@ import EnterMeetingCodePage from './components/EnterMeetingCodePage';
 import PollingPage from './components/PollingPage';
 import AboutPage from './components/AboutPage';
 import BrotherDetailScreen from './components/BrotherDetailScreen';
+import { DarkModeProvider } from './components/DarkModeContext';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,7 @@ const AuthStack = () => {
 
 const App = () => {
   return (
+    <DarkModeProvider>
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
@@ -51,6 +53,7 @@ const App = () => {
         />
       </Tab.Navigator>
     </NavigationContainer>
+    </DarkModeProvider>
   );
 };
 

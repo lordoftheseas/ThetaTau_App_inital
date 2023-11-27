@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { DarkModeContext } from './DarkModeContext';
 
 // HomePage Component
 const HomePage = ({ navigation }) => {
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+  // Define dark mode styles if needed
+  const darkStyles = isDarkMode ? stylesDark : styles;
+
   return (
     <LinearGradient
-      colors={['#ffffff', '#767676']} // Gradient colors
-      style={styles.linearGradient}
+      colors={isDarkMode ? ['#000', '#333'] : ['#ffffff', '#767676']}
+      style={[styles.linearGradient, darkStyles.linearGradient]}
     >
       <View style={styles.container}>
         {/* Top PNG Image */}
@@ -50,6 +56,13 @@ const HomePage = ({ navigation }) => {
             <Text style={styles.buttonLabels}>Meeting</Text>
           </TouchableOpacity>
         </View>
+
+          {/* Dark Mode Toggle Button */}
+          <TouchableOpacity onPress={toggleDarkMode} style={styles.darkModeButton}>
+          <Text style={styles.darkModeButtonText}>
+            {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          </Text>
+        </TouchableOpacity>
 
         {/* About Theta Tau Button */}
         <TouchableOpacity onPress={() => navigation.navigate('About')} style={styles.aboutButtonContainer}>
@@ -141,4 +154,21 @@ const styles = StyleSheet.create({
   },
 });
 
+const stylesDark = StyleSheet.create({
+  linearGradient: {
+    // Define your dark mode specific styles here
+  },
+  // Add dark mode styles for other components if needed
+  darkModeButton: {
+    marginTop: 20,
+    backgroundColor: '#555', // Darker background for the button in dark mode
+    padding: 10,
+    borderRadius: 5,
+  },
+  darkModeButtonText: {
+    color: '#fff', // Text color for better visibility in dark mode
+    textAlign: 'center',
+  },
+  // ... other dark mode styles ...
+});
 export default HomePage;
